@@ -11,7 +11,9 @@ import SwiftUI
 struct VGTriviaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestView()
+                .background(Color.background)
+                .font(.appBody)
         }
     }
 }
