@@ -12,6 +12,7 @@ struct RoundView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var exitAlert = false
+    var roundLength: Int
     
     private func header() -> some View {
         HStack(alignment: .bottom) {
@@ -89,14 +90,14 @@ struct RoundView: View {
         }
         .padding()
         .onAppear {
-                triviaViewModel.newRound(numberOfQuestions: 3)
+                triviaViewModel.newRound(numberOfQuestions: roundLength)
             }
         .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
-    RoundView().environment(TriviaViewModel())
+    RoundView(roundLength:5).environment(TriviaViewModel())
         .background(Color.background)
         .font(.appBody)
 }

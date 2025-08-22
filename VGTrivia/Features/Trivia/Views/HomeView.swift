@@ -13,9 +13,11 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20){
-                NavigationLink(destination: RoundView().environment(triviaViewModel), label: {
-                    Text("Start trivia!")
-                })
+                ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
+                    NavigationLink(destination: RoundView(roundLength:index).environment(triviaViewModel), label: {
+                        Text("Start trivia with \(index) questions!")
+                    })
+                }
                 NavigationLink(destination: TestView().environment(triviaViewModel), label: {
                     Text("TestView()")
                 })

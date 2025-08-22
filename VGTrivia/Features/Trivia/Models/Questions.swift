@@ -10,19 +10,32 @@ let questions: [Question] = [
         title: "Mario",
         content: "What's the official last name of famous Nintendo's character, **Mario**?",
         answers: ["Mario", "Giamatti", "Letsago", "Toadstool"],
-        correctAnswer: "Mario"
+        correctAnswer: "Mario",
     ),
     Question(
         title: "Shake it",
         content: "This **1999 rhythm game** features a monkey playing maracas, wearing cliché Latin-American attire.",
         answers: ["Super Monkey Ball", "Samba de Amigo", "Donkey Konga", "Pop'n Music"],
-        correctAnswer: "Samba de Amigo"
+        correctAnswer: "Samba de Amigo",
     ),
     Question(
         title: "Blue blur",
         content: "Which year saw the release of the very first **Sonic the Hedgehog** game by SEGA?",
         answers: ["1991", "1992", "1993", "1994"],
         correctAnswer: "1991",
-        preventShuffling: true
+        preventShuffling: true,
     ),
+    Question(
+        title: "Urgh",
+        content: "He used (without permission) a music from **Sonic the Hedgehog (2006)** for a commercial.",
+        answers: ["Donald Trump", "Jair Bolsonaro", "Vladimir Putin", "Javier Milei"],
+        correctAnswer: "Jair Bolsonaro",
+    ),
+    Question(
+        title: "Strawberries!",
+        content: "2D platformer **Celeste (2018)** actually started as a tiny game jam project for the following platform...",
+        answers: ["PICO-8", "Game Boy Color", "NES", "Intellivision Amico"],
+        correctAnswer: "PICO-8",
+    ),
+
 ]
