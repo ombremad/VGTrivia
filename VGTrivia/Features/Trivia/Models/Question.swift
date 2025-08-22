@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct Question {
+struct Question: Identifiable {
+    let id = UUID()
     let title: String
     let content: LocalizedStringKey
     var answers: [String]
