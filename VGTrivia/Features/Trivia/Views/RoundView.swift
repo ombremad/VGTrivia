@@ -9,14 +9,42 @@ import SwiftUI
 
 struct RoundView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
+    @Environment(\.dismiss) private var dismiss
     
-    private func score() -> some View {
-        HStack {
-            Text("Score : \(triviaViewModel.score)")
+    @State private var exitAlert = false
+    
+    private func header() -> some View {
+        HStack(alignment: .bottom) {
+            Text("Exit")
+                .clipShape(.rect)
+                .onTapGesture {
+                    exitAlert = true
+                }
+                .alert(isPresented: $exitAlert) {
+                    Alert(
+                        title: Text("Exit game?"),
+                        message: Text("Your progress will be lost."),
+                        primaryButton: .destructive(
+                            Text("Exit"))
+                        { dismiss() },
+                        secondaryButton: .cancel(Text("Cancel"))
+                          )
+                }
             Spacer()
-            Text("Question : \(triviaViewModel.currentQuestion+1) / \(triviaViewModel.questionPool.count)")
+            HStack(alignment: .bottom) {
+                Text("Score : ")
+                Text(triviaViewModel.score.description)
+                    .font(.scoreBig)
+            }
+            Spacer()
+            HStack(alignment: .bottom) {
+                Text("Question :")
+                Text((triviaViewModel.currentQuestion+1).description)
+                    .font(.scoreBig)
+                Text("/ \(triviaViewModel.questionPool.count)")
+                    .font(.score)
+            }
         }
-        .font(.appBody)
     }
     private func card() -> some View {
         VStack(spacing:16) {
@@ -57,7 +85,7 @@ struct RoundView: View {
     
     var body: some View {
         VStack(spacing:50) {
-            score()
+            header()
             card()
             answers()
         }
@@ -71,4 +99,6 @@ struct RoundView: View {
 
 #Preview {
     RoundView().environment(TriviaViewModel())
+        .background(Color.background)
+        .font(.appBody)
 }
