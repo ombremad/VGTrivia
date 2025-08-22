@@ -72,9 +72,7 @@ struct RoundView: View {
         ) {
             ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
                 Button(action: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.50) {
-                        triviaViewModel.checkAnswer(answer)
-                    }
+                    triviaViewModel.checkAnswer(answer)
                 }) {
                     Text(answer)
                 }

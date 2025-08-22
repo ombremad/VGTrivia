@@ -10,7 +10,7 @@ import SwiftUI
 struct AnswerButton: ButtonStyle {
     let backgroundColor: Color
     
-    @State private var isAnimating = false
+//    @State private var isAnimating = false
     
     init(backgroundColor: Color = .babyBlue) {
         self.backgroundColor = backgroundColor
@@ -34,19 +34,19 @@ struct AnswerButton: ButtonStyle {
                 color: .foreground.opacity(0.9),
                 radius: 0,
                 x: 0,
-                y: isAnimating ? 12 : 3,
+                y: /*isAnimating ? 12 : */3,
             )
-            .scaleEffect(isAnimating ? 0.85 : 1)
-            .animation(.easeInOut(duration: 0.10), value: isAnimating)
-            .onChange(of: configuration.isPressed) { relaxed, pressed in
-                if pressed {
-                    isAnimating = true
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                        isAnimating = false
-                    }
-                }
-            }
+//            .scaleEffect(isAnimating ? 0.85 : 1)
+//            .animation(.easeInOut(duration: 0.10), value: isAnimating)
+//            .onChange(of: configuration.isPressed) { relaxed, pressed in
+//                if pressed {
+//                    isAnimating = true
+//                } else {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+//                        isAnimating = false
+//                    }
+//                }
+//            }
     }
 }
 

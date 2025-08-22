@@ -13,7 +13,7 @@ let questions: [Question] = [
         correctAnswer: "Mario"
     ),
     Question(
-        title: "Rock is Sponge",
+        title: "Shake it",
         content: "This **1999 rhythm game** features a monkey playing maracas, wearing cliché Latin-American attire.",
         answers: ["Super Monkey Ball", "Samba de Amigo", "Donkey Konga", "Pop'n Music"],
         correctAnswer: "Samba de Amigo"
