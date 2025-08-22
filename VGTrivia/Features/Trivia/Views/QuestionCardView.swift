@@ -1,29 +1,30 @@
 //
-//  TextStyles.swift
+//  QuestionCardView.swift
 //  VGTrivia
 //
-//  Created by Anne Ferret on 18/08/2025.
+//  Created by Anne Ferret on 22/08/2025.
 //
 
 import SwiftUI
 
-struct TextStyles: View {
-    let text: String
-    
-    init(_ text: String) {
-        self.text = text
-    }
+struct QuestionCardView: View {
+    let question : Question
     
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                Text(text)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(3)
-                    .font(.appTitle)
-                    .foregroundStyle(Color.foreground)
-                    .padding(.horizontal, 22)
-                    .padding(.vertical, 8)
+                VStack(spacing: 12) {
+                    Text(question.title)
+                        .font(.appTitle)
+                    Text(question.content)
+                    ForEach(question.answers, id:\.self) { answer in
+                        Text(answer)
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Color.foreground)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 24)
                 HStack(spacing: 0) {
                     Rectangle()
                         .fill(.babyBlue)
@@ -45,7 +46,6 @@ struct TextStyles: View {
 }
 
 #Preview {
-    TestView()
-        .background(Color.background)
-        .font(.appBody)
+    QuestionCardView(question: questions[0])
+    .font(.appBody)
 }

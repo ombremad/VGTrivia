@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @Environment(TriviaViewModel.self) var triviaViewModel
+    
     var body: some View {
         TabView {
-            TestView()
+            RoundView().environment(triviaViewModel)
+                .tabItem {
+                    Image(systemName: "gamecontroller")
+                    Text("Round")
+                }
+            TestView().environment(triviaViewModel)
                 .tabItem {
                     Image(systemName: "testtube.2")
-                    Text("TESTPAGE")
-                }
-            Text("Trending")
-                .tabItem {
-                    Image(systemName: "star.square.on.square")
-                    Text("Trending")
+                    Text("Test page")
                 }
             Text("Themes")
                 .tabItem {
@@ -37,4 +39,5 @@ struct TabBarView: View {
 #Preview {
     TabBarView()
         .font(.appBody)
+        .environment(TriviaViewModel())
 }

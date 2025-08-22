@@ -12,7 +12,6 @@ struct TestView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                AppForumHeader("Fake Forum with a significatively longer post name it's a bit of a mess though")
                 Text("Lorem Ipsum")
                 Button(action: { }) {
                     Text("Default button")
