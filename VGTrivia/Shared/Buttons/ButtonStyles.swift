@@ -18,6 +18,7 @@ struct AppButton: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(maxWidth: .infinity)
             .padding()
             .foregroundColor(.foreground.opacity(0.9))
             .background(backgroundColor)
