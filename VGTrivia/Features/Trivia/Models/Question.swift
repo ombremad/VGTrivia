@@ -9,12 +9,12 @@ import SwiftUI
 
 struct Question {
     let title: String
-    let content: String
+    let content: LocalizedStringKey
     var answers: [String]
     let correctAnswer: String
     let preventShuffling: Bool
     
-    init(title: String, content: String, answers: [String], correctAnswer: String, preventShuffling: Bool) {
+    init(title: String, content: LocalizedStringKey, answers: [String], correctAnswer: String, preventShuffling: Bool) {
         self.title = title
         self.content = content
         self.answers = answers
@@ -23,7 +23,7 @@ struct Question {
     }
     
     // Unless otherwise noted, questions should always be shuffled.
-    init(title: String, content: String, answers: [String], correctAnswer: String) {
+    init(title: String, content: LocalizedStringKey, answers: [String], correctAnswer: String) {
         self.title = title
         self.content = content
         self.answers = answers

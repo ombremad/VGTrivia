@@ -13,7 +13,7 @@ struct VGTriviaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            HomeView()
                 .environment(triviaViewModel)
                 .background(Color.background)
                 .font(.appBody)

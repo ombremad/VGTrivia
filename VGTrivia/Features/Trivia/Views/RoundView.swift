@@ -16,6 +16,7 @@ struct RoundView: View {
             Spacer()
             Text("Question : \(triviaViewModel.currentQuestion+1) / \(triviaViewModel.questionPool.count)")
         }
+        .font(.appBody)
     }
     private func card() -> some View {
         VStack(spacing:16) {
@@ -43,8 +44,9 @@ struct RoundView: View {
         ) {
             ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
                 Button(action: {
-                    triviaViewModel.checkAnswer(answer)
-                    triviaViewModel.nextQuestion()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.50) {
+                        triviaViewModel.checkAnswer(answer)
+                    }
                 }) {
                     Text(answer)
                 }
@@ -63,6 +65,7 @@ struct RoundView: View {
         .onAppear {
                 triviaViewModel.newRound(numberOfQuestions: 3)
             }
+        .navigationBarBackButtonHidden()
     }
 }
 

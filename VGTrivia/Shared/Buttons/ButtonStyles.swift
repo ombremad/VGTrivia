@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AnswerButton: ButtonStyle {
+    let backgroundColor: Color
     
     @State private var isAnimating = false
-    let backgroundColor: Color
     
     init(backgroundColor: Color = .babyBlue) {
         self.backgroundColor = backgroundColor
@@ -36,14 +36,17 @@ struct AnswerButton: ButtonStyle {
                 x: 0,
                 y: isAnimating ? 12 : 3,
             )
-//            .onTapGesture {
-//                isAnimating = true
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.10) {
-//                    isAnimating = false
-//                }
-//            }
-//            .scaleEffect(isAnimating ? 0.85 : 1)
-//            .animation(.easeIn(duration: 0.10), value: isAnimating)
+            .scaleEffect(isAnimating ? 0.85 : 1)
+            .animation(.easeInOut(duration: 0.10), value: isAnimating)
+            .onChange(of: configuration.isPressed) { relaxed, pressed in
+                if pressed {
+                    isAnimating = true
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        isAnimating = false
+                    }
+                }
+            }
     }
 }
 

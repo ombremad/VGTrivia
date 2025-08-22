@@ -39,13 +39,12 @@ class TriviaViewModel {
         if answer == questionPool[currentQuestion].correctAnswer {
             score += 1
         }
+        nextQuestion()
     }
     
     func nextQuestion() {
         if currentQuestion < questionPool.count - 1 {
             currentQuestion += 1
-        } else {
-            // endRound()
         }
     }
     
