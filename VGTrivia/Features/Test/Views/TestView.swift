@@ -14,25 +14,25 @@ struct TestView: View {
             VStack(spacing: 10) {
                 Text("Lorem Ipsum")
                 Button(action: { }) {
-                    Text("Default button")
+                    Text("Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum")
                 }
-                .buttonStyle(AppButton())
+                .buttonStyle(AnswerButton())
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AppButton(backgroundColor: .peach))
+                .buttonStyle(AnswerButton(backgroundColor: .peach))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AppButton(backgroundColor: .butter))
+                .buttonStyle(AnswerButton(backgroundColor: .butter))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AppButton(backgroundColor: .lavender))
+                .buttonStyle(AnswerButton(backgroundColor: .lavender))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AppButton(backgroundColor: .minty))
+                .buttonStyle(AnswerButton(backgroundColor: .minty))
 
             }
             .padding()

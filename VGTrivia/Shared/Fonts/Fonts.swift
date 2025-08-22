@@ -9,8 +9,9 @@ import SwiftUI
 
 extension Font {
     static let appBody = Font.custom("MozillaTextVF-Regular", size: 16)
-    static let appButton = Font.custom("MozillaTextVF-SemiBold", size: 16)
-    static let appTitle = Font.custom("MozillaHeadlineVF-ExpandedSemiBold", size: 18)
+    static let appButton = Font.custom("MozillaTextVF-SemiBold", size: 18)
+    static let questionTitle = Font.custom("MozillaHeadlineVF-ExpandedSemiBold", size: 32)
+    static let questionContent = Font.custom("MozillaTextVF-Regular", size: 18)
 }
 
 #Preview {

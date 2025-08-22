@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppButton: ButtonStyle {
+struct AnswerButton: ButtonStyle {
     
     @State private var isAnimating = false
     let backgroundColor: Color
@@ -18,7 +18,9 @@ struct AppButton: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
+            .lineLimit(2)
+            .multilineTextAlignment(.center)
             .padding()
             .foregroundColor(.foreground.opacity(0.9))
             .background(backgroundColor)
@@ -34,14 +36,14 @@ struct AppButton: ButtonStyle {
                 x: 0,
                 y: isAnimating ? 12 : 3,
             )
-            .onTapGesture {
-                isAnimating = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.10) {
-                    isAnimating = false
-                }
-            }
-            .scaleEffect(isAnimating ? 0.85 : 1)
-            .animation(.easeIn(duration: 0.10), value: isAnimating)
+//            .onTapGesture {
+//                isAnimating = true
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.10) {
+//                    isAnimating = false
+//                }
+//            }
+//            .scaleEffect(isAnimating ? 0.85 : 1)
+//            .animation(.easeIn(duration: 0.10), value: isAnimating)
     }
 }
 
