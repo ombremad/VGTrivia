@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack(spacing: 20){
                 ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
                     NavigationLink(destination: RoundView(roundLength:index).environment(triviaViewModel), label: {
-                        Text("Start trivia with \(index) questions!")
+                        Text("Start with \(index) questions")
                     })
                 }
                 NavigationLink(destination: TestView().environment(triviaViewModel), label: {
