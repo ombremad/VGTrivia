@@ -33,11 +33,6 @@ struct TestView: View {
                     Text("Default button")
                 }
                 .buttonStyle(TriviaButton(backgroundColor: .minty))
-                Button(action: { }) {
-                    Text("")
-                }
-                .buttonStyle(DummyButton())
-
             }
             .padding()
         }

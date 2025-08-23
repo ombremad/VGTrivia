@@ -15,7 +15,7 @@ struct CardView<Content: View>: View {
     }
     
     var body: some View {
-        VStack(spacing:10) {
+        VStack(spacing:14) {
             RainbowStack()
             Spacer()
             self.content

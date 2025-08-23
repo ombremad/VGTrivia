@@ -50,21 +50,6 @@ struct TriviaButton: ButtonStyle {
     }
 }
 
-struct DummyButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
-            .padding()
-            .background(.charcoal)
-            .shadow(
-                color: .foreground.opacity(0.9),
-                radius: 0,
-                x: 0,
-                y: 3,
-            )
-    }
-}
-
 #Preview {
     TestView()
         .background(Color.background)
