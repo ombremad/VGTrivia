@@ -47,7 +47,6 @@ struct RoundView: View {
             }
         }
     }
-    
     private func progressBar() -> some View {
         GeometryReader { geometry in
             HStack(spacing:0) {
@@ -61,11 +60,8 @@ struct RoundView: View {
         }
         .frame(height: 10)
     }
-    
-    private func card() -> some View {
-        VStack(spacing:16) {
-            RainbowStack()
-            Spacer()
+    private func questionCard() -> some View {
+        CardView {
             Text(triviaViewModel.getQuestion()?.title ?? "")
                 .font(.questionTitle)
                 .padding(.horizontal, 12)
@@ -73,15 +69,17 @@ struct RoundView: View {
                 .font(.questionContent)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
-            Spacer()
         }
-        .multilineTextAlignment(.center)
-        .foregroundStyle(Color.foreground)
-        .background(Color.foreground.opacity(0.05))
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .frame(height: 300)
     }
-    private func answers() -> some View {
+    private func explanationCard() -> some View {
+        CardView {
+            Text(triviaViewModel.getQuestion()?.correctAnswer ?? "")
+                .font(.questionTitle)
+            Text(triviaViewModel.getQuestion()?.explanation ?? "")
+                .font(.questionContent)
+        }
+    }
+    private func answerButtons() -> some View {
         LazyVGrid(columns: [
             GridItem(.flexible()),
             GridItem(.flexible())], spacing: 20
@@ -96,13 +94,30 @@ struct RoundView: View {
             }
         }
     }
+    private func nextQuestion() -> some View {
+        Button(action: {
+            triviaViewModel.nextQuestion()
+        }) {
+            Text("Next")
+        }
+        .buttonStyle(AnswerButton(backgroundColor: .minty))
+    }
     
     var body: some View {
         VStack(spacing:50) {
             header()
             progressBar()
-            card()
-            answers()
+            if triviaViewModel.hasAnswered {
+                explanationCard()
+                nextQuestion()
+                    .frame(height:180)
+                    .clipped()
+            } else {
+                questionCard()
+                answerButtons()
+                    .frame(height:180)
+                    .clipped()
+            }
         }
         .padding()
         .onAppear {

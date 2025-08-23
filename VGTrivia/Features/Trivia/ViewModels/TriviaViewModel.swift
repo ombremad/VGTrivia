@@ -11,6 +11,7 @@ import SwiftUI
 class TriviaViewModel {
     var questionPool: [Question] = []
     var currentQuestion: Int = 0
+    var hasAnswered: Bool = false
     var score: Int = 0
         
     // This generates an array with random questions.
@@ -36,21 +37,23 @@ class TriviaViewModel {
     }
         
     func checkAnswer(_ answer: String) {
+        hasAnswered = true
         if answer == questionPool[currentQuestion].correctAnswer {
             score += 1
         }
-        nextQuestion()
     }
     
     func nextQuestion() {
         if currentQuestion < questionPool.count - 1 {
             currentQuestion += 1
         }
+        hasAnswered = false
     }
     
     func resetRound() {
         questionPool = []
         currentQuestion = 0
+        hasAnswered = false
         score = 0
     }
 }
