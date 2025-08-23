@@ -29,7 +29,7 @@ struct RoundView: View {
                             Text("Exit"))
                         { dismiss() },
                         secondaryButton: .cancel(Text("Cancel"))
-                          )
+                    )
                 }
             Spacer()
             HStack(alignment: .bottom) {
@@ -47,6 +47,21 @@ struct RoundView: View {
             }
         }
     }
+    
+    private func progressBar() -> some View {
+        GeometryReader { geometry in
+            HStack(spacing:0) {
+                Rectangle()
+                    .fill(Color.lavender)
+                    .frame(width: geometry.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
+                Rectangle()
+                    .fill(Color.charcoal)
+                    .frame(width: geometry.size.width / CGFloat(triviaViewModel.questionPool.count) * (CGFloat(triviaViewModel.questionPool.count) - CGFloat(triviaViewModel.currentQuestion+1)))
+            }
+        }
+        .frame(height: 10)
+    }
+    
     private func card() -> some View {
         VStack(spacing:16) {
             RainbowStack()
@@ -85,6 +100,7 @@ struct RoundView: View {
     var body: some View {
         VStack(spacing:50) {
             header()
+            progressBar()
             card()
             answers()
         }
