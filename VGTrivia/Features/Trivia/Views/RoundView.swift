@@ -50,12 +50,14 @@ struct RoundView: View {
     private func progressBar() -> some View {
         ZStack {
             Rectangle()
-                .fill(.charcoal)
+                .fill(.foreground.opacity(0.05))
+                .cornerRadius(200)
             HStack(spacing:0) {
                 GeometryReader { p in
                     Rectangle()
                         .fill(Color.lavender)
                         .frame(width: p.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
+                        .cornerRadius(200)
                     Spacer()
                 }
             }
@@ -138,11 +140,22 @@ struct RoundView: View {
             header()
             progressBar()
             Spacer()
-            if triviaViewModel.hasAnswered {
-                explanationCard()
-            } else {
-                questionCard()
+            ZStack {
+                if triviaViewModel.hasAnswered {
+                    explanationCard()
+                        .transition(.asymmetric(
+                            insertion: .slide.combined(with: .opacity).combined(with: .scale(scale: 0)),
+                            removal: .push(from: .leading).animation(.easeInOut(duration: 1))
+                        ))
+                } else {
+                    questionCard()
+                        .transition(.asymmetric(
+                            insertion: .push(from: .leading).animation(.easeInOut(duration: 1)),
+                            removal: .slide.combined(with: .opacity).combined(with: .scale(scale: 0))
+                        ))
+                }
             }
+            .animation(.easeInOut(duration: 0.3), value: triviaViewModel.hasAnswered)
             answerButtons()
         }
         .padding()
