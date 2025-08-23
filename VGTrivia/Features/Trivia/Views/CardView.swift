@@ -21,7 +21,7 @@ struct CardView<Content: View>: View {
             self.content
             Spacer()
         }
-        .multilineTextAlignment(.center)
+        .multilineTextAlignment(.leading)
         .foregroundStyle(Color.foreground)
         .background(Color.foreground.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: 20))

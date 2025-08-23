@@ -46,8 +46,8 @@ class TriviaViewModel {
     func nextQuestion() {
         if currentQuestion < questionPool.count - 1 {
             currentQuestion += 1
+            hasAnswered = false
         }
-        hasAnswered = false
     }
     
     func resetRound() {
@@ -55,5 +55,13 @@ class TriviaViewModel {
         currentQuestion = 0
         hasAnswered = false
         score = 0
+    }
+    
+    func isLastQuestion() -> Bool {
+        if currentQuestion < questionPool.count - 1 {
+            return false
+        } else {
+            return true
+        }
     }
 }

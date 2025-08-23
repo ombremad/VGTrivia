@@ -11,7 +11,7 @@ let questions: [Question] = [
         content: "What's the official last name of famous Nintendo's character, **Mario**?",
         answers: ["Mario", "Giamatti", "Letsago", "Toadstool"],
         correctAnswer: "Mario",
-        explanation: "",
+        explanation: "This weird explanation was coined in the infamous Super Mario Bros. 1993 movie. At first, it made Shigeru Miyamoto (creator of Mario) found it rather ridiculous, but in 2015, he admitted that Mario's full name was indeed **\"Mario Mario\"**.",
     ),
     Question(
         title: "Shake it",
@@ -23,9 +23,9 @@ let questions: [Question] = [
     Question(
         title: "Blue blur",
         content: "Which year saw the release of the very first **Sonic the Hedgehog** game by SEGA?",
-        answers: ["1991", "1992", "1993", "1994"],
+        answers: ["1989", "1991", "1993", "1995"],
         correctAnswer: "1991",
-        explanation: "",
+        explanation: "A mere year after Nintendo released their SNES and Super Mario World, Sonic showed that the SEGA Mega Drive (Genesis in the USA), available since 1988 in Japan, was still a powerhouse to be reckoned with.",
         preventShuffling: true,
     ),
     Question(
@@ -33,7 +33,7 @@ let questions: [Question] = [
         content: "He used (without permission) a music from **Sonic the Hedgehog (2006)** for a commercial...",
         answers: ["Donald Trump", "Jair Bolsonaro", "Vladimir Putin", "Javier Milei"],
         correctAnswer: "Jair Bolsonaro",
-        explanation: "",
+        explanation: "The fascist Bolsonaro was exposed by the official Sonic the Hedgehog **Twitter account**, for releasing a commercial prominently featuring an epic boss battle theme stolen from the game.",
     ),
     Question(
         title: "Strawberries!",

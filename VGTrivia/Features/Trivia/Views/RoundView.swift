@@ -48,14 +48,16 @@ struct RoundView: View {
         }
     }
     private func progressBar() -> some View {
-        GeometryReader { geometry in
+        ZStack {
+            Rectangle()
+                .fill(.charcoal)
             HStack(spacing:0) {
-                Rectangle()
-                    .fill(Color.lavender)
-                    .frame(width: geometry.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
-                Rectangle()
-                    .fill(Color.charcoal)
-                    .frame(width: geometry.size.width / CGFloat(triviaViewModel.questionPool.count) * (CGFloat(triviaViewModel.questionPool.count) - CGFloat(triviaViewModel.currentQuestion+1)))
+                GeometryReader { p in
+                    Rectangle()
+                        .fill(Color.lavender)
+                        .frame(width: p.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
+                    Spacer()
+                }
             }
         }
         .frame(height: 10)
@@ -75,8 +77,11 @@ struct RoundView: View {
         CardView {
             Text(triviaViewModel.getQuestion()?.correctAnswer ?? "")
                 .font(.questionTitle)
+                .padding(.horizontal, 12)
             Text(triviaViewModel.getQuestion()?.explanation ?? "")
                 .font(.questionContent)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
         }
     }
     private func answerButtons() -> some View {
@@ -94,13 +99,13 @@ struct RoundView: View {
             }
         }
     }
-    private func nextQuestion() -> some View {
+    private func nextButton() -> some View {
         Button(action: {
-            triviaViewModel.nextQuestion()
+            triviaViewModel.isLastQuestion() ? dismiss() : triviaViewModel.nextQuestion()
         }) {
-            Text("Next")
+            Text(triviaViewModel.isLastQuestion() ? "End game" : "Go to next question!")
         }
-        .buttonStyle(AnswerButton(backgroundColor: .minty))
+        .buttonStyle(nextQuestionButton())
     }
     
     var body: some View {
@@ -109,14 +114,10 @@ struct RoundView: View {
             progressBar()
             if triviaViewModel.hasAnswered {
                 explanationCard()
-                nextQuestion()
-                    .frame(height:180)
-                    .clipped()
+                nextButton()
             } else {
                 questionCard()
                 answerButtons()
-                    .frame(height:180)
-                    .clipped()
             }
         }
         .padding()
