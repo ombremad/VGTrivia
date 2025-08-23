@@ -12,6 +12,7 @@ class TriviaViewModel {
     var questionPool: [Question] = []
     var currentQuestion: Int = 0
     var hasAnswered: Bool = false
+    var hasAnsweredCorrectly: Bool = false
     var score: Int = 0
         
     // This generates an array with random questions.
@@ -40,6 +41,7 @@ class TriviaViewModel {
         hasAnswered = true
         if answer == questionPool[currentQuestion].correctAnswer {
             score += 1
+            hasAnsweredCorrectly = true
         }
     }
     
@@ -47,6 +49,7 @@ class TriviaViewModel {
         if currentQuestion < questionPool.count - 1 {
             currentQuestion += 1
             hasAnswered = false
+            hasAnsweredCorrectly = false
         }
     }
     
@@ -54,6 +57,7 @@ class TriviaViewModel {
         questionPool = []
         currentQuestion = 0
         hasAnswered = false
+        hasAnsweredCorrectly = false
         score = 0
     }
     

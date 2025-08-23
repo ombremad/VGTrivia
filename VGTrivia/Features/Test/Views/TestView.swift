@@ -16,23 +16,27 @@ struct TestView: View {
                 Button(action: { }) {
                     Text("Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum")
                 }
-                .buttonStyle(AnswerButton())
+                .buttonStyle(TriviaButton())
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AnswerButton(backgroundColor: .peach))
+                .buttonStyle(TriviaButton(backgroundColor: .peach))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AnswerButton(backgroundColor: .butter))
+                .buttonStyle(TriviaButton(backgroundColor: .butter))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AnswerButton(backgroundColor: .lavender))
+                .buttonStyle(TriviaButton(backgroundColor: .lavender))
                 Button(action: { }) {
                     Text("Default button")
                 }
-                .buttonStyle(AnswerButton(backgroundColor: .minty))
+                .buttonStyle(TriviaButton(backgroundColor: .minty))
+                Button(action: { }) {
+                    Text("")
+                }
+                .buttonStyle(DummyButton())
 
             }
             .padding()

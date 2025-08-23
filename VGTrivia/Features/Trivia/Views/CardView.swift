@@ -15,7 +15,7 @@ struct CardView<Content: View>: View {
     }
     
     var body: some View {
-        VStack(spacing:16) {
+        VStack(spacing:10) {
             RainbowStack()
             Spacer()
             self.content
@@ -25,7 +25,7 @@ struct CardView<Content: View>: View {
         .foregroundStyle(Color.foreground)
         .background(Color.foreground.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .frame(height: 300)
+        .frame(height: 320)
     }
 }
 

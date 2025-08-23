@@ -68,57 +68,82 @@ struct RoundView: View {
                 .font(.questionTitle)
                 .padding(.horizontal, 12)
             Text(triviaViewModel.getQuestion()?.content ?? "")
-                .font(.questionContent)
+                .font(.cardContent)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
         }
     }
     private func explanationCard() -> some View {
         CardView {
+            HStack {
+                Image(systemName: triviaViewModel.hasAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
+                Text(triviaViewModel.hasAnsweredCorrectly  ? "You guessed it!" : "Wrong! The answer was")
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 4)
+            .foregroundStyle(Color.foreground)
+            .font(.cardCallout)
+            .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
+            .clipShape(.capsule)
             Text(triviaViewModel.getQuestion()?.correctAnswer ?? "")
                 .font(.questionTitle)
                 .padding(.horizontal, 12)
             Text(triviaViewModel.getQuestion()?.explanation ?? "")
-                .font(.questionContent)
+                .font(.cardContent)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
         }
     }
     private func answerButtons() -> some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible()),
-            GridItem(.flexible())], spacing: 20
-        ) {
-            ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
-                Button(action: {
-                    triviaViewModel.checkAnswer(answer)
-                }) {
-                    Text(answer)
+        VStack(spacing: 25) {
+            LazyVGrid(columns: [
+                GridItem(.flexible()),
+                GridItem(.flexible())], spacing: 10
+            ) {
+                ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
+                    Button(action: {
+                        triviaViewModel.hasAnswered ? nil : triviaViewModel.checkAnswer(answer)
+                    }) {
+                        Text(answer)
+                    }
+                    .buttonStyle(TriviaButton(
+                        backgroundColor : triviaViewModel.hasAnswered ? (
+                            triviaViewModel.getQuestion()?.correctAnswer .lowercased() == answer.lowercased() ? .minty : .peach
+                        ) : .babyBlue)
+                    )
                 }
-                .buttonStyle(AnswerButton())
             }
+            nextButton()
         }
     }
     private func nextButton() -> some View {
-        Button(action: {
-            triviaViewModel.isLastQuestion() ? dismiss() : triviaViewModel.nextQuestion()
-        }) {
-            Text(triviaViewModel.isLastQuestion() ? "End game" : "Go to next question!")
+        VStack {
+            if triviaViewModel.hasAnswered {
+                Button(action: {
+                    triviaViewModel.isLastQuestion() ? dismiss() : triviaViewModel.nextQuestion()
+                }) {
+                    Text(triviaViewModel.isLastQuestion() ? "End game" : "Go to next question!")
+                }
+                .buttonStyle(
+                    TriviaButton(backgroundColor: triviaViewModel.isLastQuestion() ? .butter : .babyBlue)
+                )
+            }
         }
-        .buttonStyle(nextQuestionButton())
+        .frame(height: 90)
+        .clipped()
     }
     
     var body: some View {
-        VStack(spacing:50) {
+        VStack(spacing:25) {
             header()
             progressBar()
+            Spacer()
             if triviaViewModel.hasAnswered {
                 explanationCard()
-                nextButton()
             } else {
                 questionCard()
-                answerButtons()
             }
+            answerButtons()
         }
         .padding()
         .onAppear {
