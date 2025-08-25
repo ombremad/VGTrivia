@@ -34,10 +34,12 @@ struct TriviaButton: ButtonStyle {
                 color: .foreground.opacity(0.9),
                 radius: 0,
                 x: 0,
-                y: /*isAnimating ? 12 : */3,
+                y: configuration.isPressed ? 10 : 3,
             )
-//            .scaleEffect(isAnimating ? 0.85 : 1)
-//            .animation(.easeInOut(duration: 0.10), value: isAnimating)
+            .offset(y: configuration.isPressed ? 10 : 0)
+            .scaleEffect (configuration.isPressed ? 0.9 : 1)
+            .animation(.easeInOut(duration: 0.05), value: configuration.isPressed)
+//            .scaleEffect(configuration.isPressed ? 0.85 : 1)
 //            .onChange(of: configuration.isPressed) { relaxed, pressed in
 //                if pressed {
 //                    isAnimating = true

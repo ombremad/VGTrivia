@@ -131,7 +131,7 @@ struct RoundView: View {
                 )
             }
         }
-        .frame(height: 90)
+        .frame(height: 110)
         .clipped()
     }
     
@@ -145,7 +145,7 @@ struct RoundView: View {
                     explanationCard()
                         .transition(.asymmetric(
                             insertion: .slide.combined(with: .opacity).combined(with: .scale(scale: 0)),
-                            removal: .push(from: .leading).animation(.easeInOut(duration: 1))
+                            removal: .push(from: .leading).animation(.easeInOut(duration: 0.9))
                         ))
                 } else {
                     questionCard()
