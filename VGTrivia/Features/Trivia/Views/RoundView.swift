@@ -58,6 +58,7 @@ struct RoundView: View {
                         .fill(Color.lavender)
                         .frame(width: p.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
                         .cornerRadius(200)
+                        .animation(.bouncy(duration: 0.6, extraBounce: 0.2), value: triviaViewModel.currentQuestion)
                     Spacer()
                 }
             }
