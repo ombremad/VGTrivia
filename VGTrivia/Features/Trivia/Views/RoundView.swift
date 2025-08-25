@@ -73,7 +73,6 @@ struct RoundView: View {
             Text(triviaViewModel.getQuestion()?.content ?? "")
                 .font(.cardContent)
                 .padding(.horizontal, 20)
-                .padding(.bottom, 20)
         }
     }
     private func explanationCard() -> some View {
@@ -94,7 +93,6 @@ struct RoundView: View {
             Text(triviaViewModel.getQuestion()?.explanation ?? "")
                 .font(.cardContent)
                 .padding(.horizontal, 20)
-                .padding(.bottom, 20)
         }
     }
     private func answerButtons() -> some View {

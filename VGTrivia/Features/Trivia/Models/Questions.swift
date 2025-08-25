@@ -261,7 +261,7 @@ let questions: [Question] = [
     ),
     Question(
         title: "Games within a game",
-        content: "Which of these isn't a game mode available in Fortnite?",
+        content: "Which of these isn't a game mode available in **Fortnite**?",
         answers: [
             "Fortnite Fantasy",
             "Battle Royale",
@@ -269,19 +269,7 @@ let questions: [Question] = [
             "LEGO Fortnite"
         ],
         correctAnswer: "Fortnite Fantasy",
-        explanation: "Nowadays, Fortnite is really a platform more than it is a game. In it, you can pick between various game modes, from the OG Save the World to the well-known Battle Royale, as well as LEGO Fortnite (a Minecraft-like survival), Fortnite Festival (a rhythm game by the makers of Rock Band), and more.",
-    ),
-    Question(
-        title: "Games within a game",
-        content: "Which of these isn't a game mode available in Fortnite?",
-        answers: [
-            "Fortnite Fantasy",
-            "Battle Royale",
-            "Fortnite Festival",
-            "LEGO Fortnite"
-        ],
-        correctAnswer: "Fortnite Fantasy",
-        explanation: "Nowadays, Fortnite is really a platform more than it is a game. In it, you can pick between various game modes, from the OG Save the World to the well-known Battle Royale, as well as LEGO Fortnite (a Minecraft-like survival), Fortnite Festival (a rhythm game by the makers of Rock Band), and more.",
+        explanation: "Nowadays, Fortnite is really a **platform** more than it is a game. You can pick between various game modes, like the OG Save the World, the well-known Battle Royale, LEGO Fortnite (a Minecraft-like survival), Fortnite Festival (a rhythm game by the makers of Rock Band), and more.",
     ),
     Question(
         title: "Know your enemy",
