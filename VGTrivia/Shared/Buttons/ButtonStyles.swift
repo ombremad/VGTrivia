@@ -9,9 +9,7 @@ import SwiftUI
 
 struct TriviaButton: ButtonStyle {
     let backgroundColor: Color
-    
-//    @State private var isAnimating = false
-    
+        
     init(backgroundColor: Color = .babyBlue) {
         self.backgroundColor = backgroundColor
     }
@@ -36,19 +34,9 @@ struct TriviaButton: ButtonStyle {
                 x: 0,
                 y: configuration.isPressed ? 10 : 3,
             )
-            .offset(y: configuration.isPressed ? 10 : 0)
+            .offset(y: configuration.isPressed ? -5 : 0)
             .scaleEffect (configuration.isPressed ? 0.9 : 1)
             .animation(.easeInOut(duration: 0.05), value: configuration.isPressed)
-//            .scaleEffect(configuration.isPressed ? 0.85 : 1)
-//            .onChange(of: configuration.isPressed) { relaxed, pressed in
-//                if pressed {
-//                    isAnimating = true
-//                } else {
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-//                        isAnimating = false
-//                    }
-//                }
-//            }
     }
 }
 

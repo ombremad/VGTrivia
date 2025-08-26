@@ -20,7 +20,7 @@ struct TextStyles: View {
                 Text(text)
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
-                    .font(.questionTitle)
+                    .font(.appTitle)
                     .foregroundStyle(Color.foreground)
                     .padding(.horizontal, 22)
                     .padding(.vertical, 8)

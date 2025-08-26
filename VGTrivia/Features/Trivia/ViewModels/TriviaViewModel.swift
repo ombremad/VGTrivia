@@ -14,11 +14,13 @@ class TriviaViewModel {
     var hasAnswered: Bool = false
     var hasAnsweredCorrectly: Bool = false
     var score: Int = 0
+    var roundLength: Int = 5
         
     // This generates an array with random questions.
     // Number of questions is defined for the round.
     // Answers are shuffled for every question unless preventShuffling is set in a question.
-    func newRound(numberOfQuestions: Int) {
+    func newRound() {
+        let numberOfQuestions = roundLength
         resetRound()
         questionPool = Array(
             questions.shuffled().prefix(numberOfQuestions).map { question in
@@ -59,6 +61,7 @@ class TriviaViewModel {
         hasAnswered = false
         hasAnsweredCorrectly = false
         score = 0
+        roundLength = 5
     }
     
     func isLastQuestion() -> Bool {

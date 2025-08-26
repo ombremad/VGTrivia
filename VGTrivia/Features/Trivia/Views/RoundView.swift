@@ -12,7 +12,6 @@ struct RoundView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var exitAlert = false
-    var roundLength: Int
     
     private func header() -> some View {
         HStack(alignment: .bottom) {
@@ -68,7 +67,7 @@ struct RoundView: View {
     private func questionCard() -> some View {
         CardView {
             Text(triviaViewModel.getQuestion()?.title ?? "")
-                .font(.questionTitle)
+                .font(.appTitle)
                 .padding(.horizontal, 12)
             Text(triviaViewModel.getQuestion()?.content ?? "")
                 .font(.cardContent)
@@ -88,7 +87,7 @@ struct RoundView: View {
             .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
             .clipShape(.capsule)
             Text(triviaViewModel.getQuestion()?.correctAnswer ?? "")
-                .font(.questionTitle)
+                .font(.appTitle)
                 .padding(.horizontal, 12)
             Text(triviaViewModel.getQuestion()?.explanation ?? "")
                 .font(.cardContent)
@@ -97,10 +96,7 @@ struct RoundView: View {
     }
     private func answerButtons() -> some View {
         VStack(spacing: 25) {
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())], spacing: 10
-            ) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 10) {
                 ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
                     Button(action: {
                         triviaViewModel.hasAnswered ? nil : triviaViewModel.checkAnswer(answer)
@@ -159,14 +155,14 @@ struct RoundView: View {
         }
         .padding()
         .onAppear {
-                triviaViewModel.newRound(numberOfQuestions: roundLength)
+            triviaViewModel.newRound()
             }
         .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
-    RoundView(roundLength:5).environment(TriviaViewModel())
+    RoundView().environment(TriviaViewModel())
         .background(Color.background)
         .font(.appBody)
 }

@@ -11,7 +11,7 @@ extension Font {
     static let appBody = Font.custom("MozillaTextVF-Regular", size: 15)
     static let appButton = Font.custom("MozillaTextVF-SemiBold", size: 18)
     static let appButtonBig = Font.custom("MozillaHeadlineVF-SemiBold", size: 20)
-    static let questionTitle = Font.custom("MozillaHeadlineVF-ExpandedSemiBold", size: 26)
+    static let appTitle = Font.custom("MozillaHeadlineVF-ExpandedSemiBold", size: 26)
     static let cardContent = Font.custom("MozillaTextVF-Regular", size: 16)
     static let cardCallout = Font.custom("MozillaTextVF-SemiBold", size: 14)
     static let score = Font.custom("MozillaTextVF-SemiBold", size: 16)
