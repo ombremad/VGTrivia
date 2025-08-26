@@ -296,7 +296,7 @@ let questions: [Question] = [
         explanation: "Through simple gameplay mechanisms, like ID and fingerprint checks, **Papers, Please (2013)** tells a loaded story about authoritarianism and immigration. It offers 20 different endings, based on the player's choices.",
     ),
     Question(
-        title: "Cuuuute!",
+        title: "So cuuuute!",
         content: "A cute, round, pink blob in the **Nintendo** universe. He eats his enemies to mimic their powers...",
         answers: [
             "Kirby",
@@ -320,7 +320,7 @@ let questions: [Question] = [
         explanation: "Naked and scared, little Isaac has no issue coming with a **constant flow of tears** to shoot against foes. Upgrading this rather puny ability through various power-ups is one of the game's main gameplay features.",
     ),
     Question(
-        title: "About that bear...",
+        title: "About a bear",
         content: "Which 2023 game, adapted from the 5th edition of **Dungeons and Dragons**, let you team up with Astarion, Gale, Shadowheart, Lae'zel, Wyll and Karlach?",
         answers: [
             "Baldur's Gate 3",
@@ -330,5 +330,17 @@ let questions: [Question] = [
         ],
         correctAnswer: "Baldur's Gate 3",
         explanation: "Independant developer **Larian Studio**, based in Ghent, Belgium, made what is now widely regarded as one of the greatest role-playing games of all time.",
+    ),
+    Question(
+        title: "Boy!",
+        content: "In the first three main **God of War** games, protagonist Kratos evolves in a Greek setting. Then, in **2018**, the series evolves to embrace which new mythology?",
+        answers: [
+            "Norse",
+            "Roman",
+            "Slavic",
+            "Egyptian",
+        ],
+        correctAnswer: "Norse",
+        explanation: "In the 2018 reboot/sequel of the series, the aging son of Zeus has come short of Olympian gods to kill. He now wanders the Norse pantheon, in the realm of **Midgard**, with his son Atreus.",
     ),
 ]
