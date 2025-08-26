@@ -152,7 +152,7 @@ let questions: [Question] = [
         explanation: "**The Sims** convinced many artists to gibberish their own songs: Depeche Mode, The Black Eyed Peas, Katy Perry, Paramore, Lily Allen, Carly Rae Jepsen, The Pussycat Dolls, Rise Against, OK Go, My Chemical Romance, Charli XCX, girl in red...",
     ),
     Question(
-        title: "Soon soon!",
+        title: "Sul sul!",
         content: "**The Sims** video game series invented a peculiar language that is used in the game world. How was it named?",
         answers: [
             "Simlish",
