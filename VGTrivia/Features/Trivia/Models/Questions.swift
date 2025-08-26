@@ -269,7 +269,7 @@ let questions: [Question] = [
             "LEGO Fortnite"
         ],
         correctAnswer: "Fortnite Fantasy",
-        explanation: "Nowadays, Fortnite is really a **platform** more than it is a game. You can pick between various game modes, like the OG Save the World, the well-known Battle Royale, LEGO Fortnite (a Minecraft-like survival), Fortnite Festival (a rhythm game by the makers of Rock Band), and more.",
+        explanation: "Nowadays, Fortnite is really a **platform** more than it is a game. You can pick between various game modes, like the OG Save the World, the well-known Battle Royale, LEGO Fortnite (a Minecraft-like survival), Fortnite Festival (a rhythm game by the makers of Rock Band), and more...",
     ),
     Question(
         title: "Know your enemy",
@@ -308,7 +308,7 @@ let questions: [Question] = [
         explanation: "Don't get fooled by his cute looks! **Kirby** is a powerful being. He's the reincarnation of a God, and is capable of saving galaxies and destroying entire dimensions alike.",
     ),
     Question(
-        title: "Cuuuute!",
+        title: "Mother?",
         content: "In the beginning of a new game of **The Binding of Isaac (2011)**, main protagonist Isaac has to defeat enemies by using his...",
         answers: [
             "Tears",
@@ -318,5 +318,17 @@ let questions: [Question] = [
         ],
         correctAnswer: "Tears",
         explanation: "Naked and scared, little Isaac has no issue coming with a **constant flow of tears** to shoot against foes. Upgrading this rather puny ability through various power-ups is one of the game's main gameplay features.",
+    ),
+    Question(
+        title: "About that bear...",
+        content: "Which 2023 game, adapted from the 5th edition of **Dungeons and Dragons**, let you team up with Astarion, Gale, Shadowheart, Lae'zel, Wyll and Karlach?",
+        answers: [
+            "Baldur's Gate 3",
+            "The Witcher 3: Wild Hunt",
+            "The Elder Scrolls V: Skyrim",
+            "Elden Ring",
+        ],
+        correctAnswer: "Baldur's Gate 3",
+        explanation: "Independant developer **Larian Studio**, based in Ghent, Belgium, made what is now widely regarded as one of the greatest role-playing games of all time.",
     ),
 ]
