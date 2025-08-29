@@ -161,8 +161,9 @@ struct RoundView: View {
     }
 }
 
-//#Preview {
-//    RoundView().environment(TriviaViewModel())
-//        .background(Color.background)
-//        .font(.appBody)
-//}
+#Preview {
+    RoundView(navigationPath: .constant(NavigationPath()))
+        .environment(TriviaViewModel())
+        .background(Color.background)
+        .font(.appBody)
+}

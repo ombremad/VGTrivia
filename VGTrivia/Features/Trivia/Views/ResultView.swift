@@ -12,15 +12,18 @@ struct ResultView: View {
     @Binding var navigationPath: NavigationPath
     
     var body: some View {
-        Button(action: {
-            navigationPath = NavigationPath()
-        }) {
-            Text("Return to home")
+        VStack {
+            Button(action: {
+                navigationPath = NavigationPath()
+            }) {
+                Text("Return to home")
+            }
+            .buttonStyle(TriviaButton())
         }
-        .buttonStyle(TriviaButton())
     }
 }
 
-//#Preview {
-//    ResultView()
-//}
+#Preview {
+    ResultView(navigationPath: .constant(NavigationPath()))
+        .environment(TriviaViewModel())
+}
