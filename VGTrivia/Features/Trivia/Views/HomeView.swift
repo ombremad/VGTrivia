@@ -11,6 +11,10 @@ struct HomeView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
     @State var navigationPath = NavigationPath()
     
+    private func bigTitle() -> some View {
+        Text("VGTrivia")
+            .font(.appBigTitle)
+    }
     private func numberOfQuestions() -> some View {
         VStack(spacing: 20) {
             Text("Number of questions")
@@ -27,13 +31,6 @@ struct HomeView: View {
             }
         }
     }
-    private func otherSettings() -> some View {
-        VStack(spacing: 20) {
-            Text("Other settings")
-                .font(.appTitle)
-            Text("(To be implemented soon-ish)")
-        }
-    }
     private func startButton() -> some View {
         Button(action: {
             navigationPath.append(DestinationViews.round)
@@ -46,8 +43,10 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $navigationPath) {
             VStack(spacing: 50) {
+                Spacer()
+                bigTitle()
                 numberOfQuestions()
-                otherSettings()
+                Spacer()
                 startButton()
             }
             .padding(.horizontal)
@@ -67,7 +66,8 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView().environment(TriviaViewModel())
+    HomeView()
+        .environment(TriviaViewModel())
         .background(Color.background)
         .font(.appBody)
 }

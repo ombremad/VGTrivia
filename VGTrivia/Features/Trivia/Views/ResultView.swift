@@ -13,17 +13,30 @@ struct ResultView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+                Text("Your score")
+                .font(.appTitle)
+            HStack {
+                Text(triviaViewModel.score.description)
+                Text("/")
+                Text(triviaViewModel.questionPool.count.description)
+            }
+            Spacer()
             Button(action: {
                 navigationPath = NavigationPath()
             }) {
-                Text("Return to home")
+                Text("End game")
             }
-            .buttonStyle(TriviaButton())
+            .buttonStyle(TriviaButton(backgroundColor: .butter))
         }
+        .padding()
+        .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
     ResultView(navigationPath: .constant(NavigationPath()))
         .environment(TriviaViewModel())
+        .background(Color.background)
+        .font(.appBody)
 }
