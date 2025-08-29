@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoundView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Binding var navigationPath: NavigationPath
     
     @State private var exitAlert = false
     
@@ -26,7 +26,7 @@ struct RoundView: View {
                         message: Text("Your progress will be lost."),
                         primaryButton: .destructive(
                             Text("Exit"))
-                        { dismiss() },
+                        { navigationPath.removeLast() },
                         secondaryButton: .cancel(Text("Cancel"))
                     )
                 }
@@ -117,7 +117,7 @@ struct RoundView: View {
         VStack {
             if triviaViewModel.hasAnswered {
                 Button(action: {
-                    triviaViewModel.isLastQuestion() ? dismiss() : triviaViewModel.nextQuestion()
+                    triviaViewModel.isLastQuestion() ? navigationPath.append(DestinationViews.result) : triviaViewModel.nextQuestion()
                 }) {
                     Text(triviaViewModel.isLastQuestion() ? "End game" : "Go to next question!")
                 }
@@ -161,8 +161,8 @@ struct RoundView: View {
     }
 }
 
-#Preview {
-    RoundView().environment(TriviaViewModel())
-        .background(Color.background)
-        .font(.appBody)
-}
+//#Preview {
+//    RoundView().environment(TriviaViewModel())
+//        .background(Color.background)
+//        .font(.appBody)
+//}

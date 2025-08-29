@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
+    @State var navigationPath = NavigationPath()
     
     private func numberOfQuestions() -> some View {
         VStack(spacing: 20) {
@@ -34,14 +35,16 @@ struct HomeView: View {
         }
     }
     private func startButton() -> some View {
-        NavigationLink (destination:RoundView()) {
+        Button(action: {
+            navigationPath.append(DestinationViews.round)
+        }) {
             Text("Start game")
-                .font(.appTitle)
         }
+        .buttonStyle(TriviaButton())
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             VStack(spacing: 50) {
                 numberOfQuestions()
                 otherSettings()
@@ -50,6 +53,14 @@ struct HomeView: View {
             .padding(.horizontal)
             .onAppear {
                 triviaViewModel.resetRound()
+            }
+            .navigationDestination(for: DestinationViews.self) { destination in
+                switch destination {
+                    case .round:
+                        RoundView(navigationPath: $navigationPath)
+                            .environment(triviaViewModel)
+                        case .result: ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
+                }
             }
         }
     }
