@@ -12,23 +12,36 @@ struct HomeView: View {
     @State var navigationPath = NavigationPath()
     
     private func bigTitle() -> some View {
-        Text("VGTrivia")
-            .font(.appBigTitle)
+        HStack {
+            Image(systemName: "gamecontroller")
+            Text("VGTrivia")
+                .font(.appBigTitle)
+        }
+        .foregroundStyle(.charcoal)
+        .padding(.vertical)
+        .padding(.horizontal, 30)
+        .background(
+            RadialGradient(colors:[.babyBlue, .peach], center: .center, startRadius: 0, endRadius: 150)
+        )
+        .clipShape(.capsule)
     }
     private func numberOfQuestions() -> some View {
-        VStack(spacing: 20) {
-            Text("Number of questions")
-                .font(.appTitle)
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
-                ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
-                            Button(action: {
-                                triviaViewModel.roundLength = index
-                            }) {
-                                Text(index.description)
-                            }
-                            .buttonStyle(TriviaButton(backgroundColor: triviaViewModel.roundLength == index ? .babyBlue : .pearl))
+        CardView {
+            VStack(spacing: 20) {
+                Text("Number of questions")
+                    .font(.appTitle)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
+                    ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
+                        Button(action: {
+                            triviaViewModel.roundLength = index
+                        }) {
+                            Text(index.description)
+                        }
+                        .buttonStyle(TriviaButton(backgroundColor: triviaViewModel.roundLength == index ? .babyBlue : .pearl))
+                    }
                 }
             }
+            .padding()
         }
     }
     private func startButton() -> some View {
@@ -61,6 +74,7 @@ struct HomeView: View {
                         case .result: ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
                 }
             }
+            .background(DotPatternBackground(offset: 0)).ignoresSafeArea(.all)
         }
     }
 }
@@ -68,6 +82,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environment(TriviaViewModel())
-        .background(Color.background)
         .font(.appBody)
 }
