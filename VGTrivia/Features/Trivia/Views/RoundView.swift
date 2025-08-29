@@ -9,41 +9,44 @@ import SwiftUI
 
 struct RoundView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Binding var navigationPath: NavigationPath
     
     @State private var exitAlert = false
     
     private func header() -> some View {
-        HStack(alignment: .bottom) {
-            Text("Exit")
-                .clipShape(.rect)
-                .onTapGesture {
-                    exitAlert = true
-                }
-                .alert(isPresented: $exitAlert) {
-                    Alert(
-                        title: Text("Exit game?"),
-                        message: Text("Your progress will be lost."),
-                        primaryButton: .destructive(
-                            Text("Exit"))
-                        { dismiss() },
-                        secondaryButton: .cancel(Text("Cancel"))
-                    )
-                }
-            Spacer()
+        VStack {
             HStack(alignment: .bottom) {
-                Text("Score : ")
-                Text(triviaViewModel.score.description)
-                    .font(.scoreBig)
+                Text("Exit")
+                    .clipShape(.rect)
+                    .onTapGesture {
+                        exitAlert = true
+                    }
+                    .alert(isPresented: $exitAlert) {
+                        Alert(
+                            title: Text("Exit game?"),
+                            message: Text("Your progress will be lost."),
+                            primaryButton: .destructive(
+                                Text("Exit"))
+                            { navigationPath.removeLast() },
+                            secondaryButton: .cancel(Text("Cancel"))
+                        )
+                    }
+                Spacer()
+                HStack(alignment: .bottom) {
+                    Text("Score : ")
+                    Text(triviaViewModel.score.description)
+                        .font(.scoreBig)
+                }
+                Spacer()
+                HStack(alignment: .bottom) {
+                    Text("Question :")
+                    Text((triviaViewModel.currentQuestion+1).description)
+                        .font(.scoreBig)
+                    Text("/ \(triviaViewModel.questionPool.count)")
+                        .font(.score)
+                }
             }
-            Spacer()
-            HStack(alignment: .bottom) {
-                Text("Question :")
-                Text((triviaViewModel.currentQuestion+1).description)
-                    .font(.scoreBig)
-                Text("/ \(triviaViewModel.questionPool.count)")
-                    .font(.score)
-            }
+            progressBar()
         }
     }
     private func progressBar() -> some View {
@@ -110,16 +113,15 @@ struct RoundView: View {
                     )
                 }
             }
-            nextButton()
         }
     }
     private func nextButton() -> some View {
         VStack {
             if triviaViewModel.hasAnswered {
                 Button(action: {
-                    triviaViewModel.isLastQuestion() ? dismiss() : triviaViewModel.nextQuestion()
+                    triviaViewModel.isLastQuestion() ? navigationPath.append(DestinationViews.result) : triviaViewModel.nextQuestion()
                 }) {
-                    Text(triviaViewModel.isLastQuestion() ? "End game" : "Go to next question!")
+                    Text(triviaViewModel.isLastQuestion() ? "See results" : "Go to next question!")
                 }
                 .buttonStyle(
                     TriviaButton(backgroundColor: triviaViewModel.isLastQuestion() ? .butter : .babyBlue)
@@ -133,7 +135,6 @@ struct RoundView: View {
     var body: some View {
         VStack(spacing:25) {
             header()
-            progressBar()
             Spacer()
             ZStack {
                 if triviaViewModel.hasAnswered {
@@ -152,6 +153,8 @@ struct RoundView: View {
             }
             .animation(.easeInOut(duration: 0.3), value: triviaViewModel.hasAnswered)
             answerButtons()
+            Spacer()
+            nextButton()
         }
         .padding()
         .onAppear {
@@ -162,7 +165,8 @@ struct RoundView: View {
 }
 
 #Preview {
-    RoundView().environment(TriviaViewModel())
+    RoundView(navigationPath: .constant(NavigationPath()))
+        .environment(TriviaViewModel())
         .background(Color.background)
         .font(.appBody)
 }

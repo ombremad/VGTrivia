@@ -14,9 +14,9 @@ struct VGTriviaApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .environment(triviaViewModel)
-                .background(Color.background).ignoresSafeArea(.all)
-                .font(.appBody)
+            .environment(triviaViewModel)
+            .background(Color.background).ignoresSafeArea(.all)
+            .font(.appBody)
         }
     }
 }

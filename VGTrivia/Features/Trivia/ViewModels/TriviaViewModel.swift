@@ -55,6 +55,7 @@ class TriviaViewModel {
         }
     }
     
+    // To trigger whenever we go back to home 
     func resetRound() {
         questionPool = []
         currentQuestion = 0

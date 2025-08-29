@@ -29,6 +29,8 @@ struct CardView<Content: View>: View {
     }
 }
 
-//#Preview {
-//    CardView()
-//}
+#Preview {
+    CardView {
+        Text("CardView")
+    }
+}

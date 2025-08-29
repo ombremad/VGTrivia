@@ -9,7 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
+    @State var navigationPath = NavigationPath()
     
+    private func bigTitle() -> some View {
+        Text("VGTrivia")
+            .font(.appBigTitle)
+    }
     private func numberOfQuestions() -> some View {
         VStack(spacing: 20) {
             Text("Number of questions")
@@ -26,37 +31,43 @@ struct HomeView: View {
             }
         }
     }
-    private func otherSettings() -> some View {
-        VStack(spacing: 20) {
-            Text("Other settings")
-                .font(.appTitle)
-            Text("(To be implemented soon-ish)")
-        }
-    }
     private func startButton() -> some View {
-        NavigationLink (destination:RoundView()) {
+        Button(action: {
+            navigationPath.append(DestinationViews.round)
+        }) {
             Text("Start game")
-                .font(.appTitle)
         }
+        .buttonStyle(TriviaButton())
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             VStack(spacing: 50) {
+                Spacer()
+                bigTitle()
                 numberOfQuestions()
-                otherSettings()
+                Spacer()
                 startButton()
             }
             .padding(.horizontal)
             .onAppear {
                 triviaViewModel.resetRound()
             }
+            .navigationDestination(for: DestinationViews.self) { destination in
+                switch destination {
+                    case .round:
+                        RoundView(navigationPath: $navigationPath)
+                            .environment(triviaViewModel)
+                        case .result: ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
+                }
+            }
         }
     }
 }
 
 #Preview {
-    HomeView().environment(TriviaViewModel())
+    HomeView()
+        .environment(TriviaViewModel())
         .background(Color.background)
         .font(.appBody)
 }
