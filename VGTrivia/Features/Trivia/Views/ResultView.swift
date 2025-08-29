@@ -13,7 +13,7 @@ struct ResultView: View {
     
     var body: some View {
         Button(action: {
-            navigationPath.removeLast(2)
+            navigationPath = NavigationPath()
         }) {
             Text("Return to home")
         }
