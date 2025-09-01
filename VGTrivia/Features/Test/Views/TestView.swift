@@ -11,8 +11,18 @@ struct TestView: View {
         
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
-                Text("Lorem Ipsum")
+            VStack(spacing: 16) {
+                Button(action: { }) {
+                    HStack {
+                        Image(systemName: "gamecontroller.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 40)
+                        Text("VGTrivia")
+                    }
+                }
+                .buttonStyle(BigTitleButton())
+
                 Button(action: { }) {
                     Text("Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum")
                 }
@@ -33,6 +43,7 @@ struct TestView: View {
                     Text("Default button")
                 }
                 .buttonStyle(TriviaButton(backgroundColor: .minty))
+                Text("Lorem Ipsum")
             }
             .padding()
         }

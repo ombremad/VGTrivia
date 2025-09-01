@@ -10,21 +10,25 @@ import SwiftUI
 struct HomeView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
     @State var navigationPath = NavigationPath()
+    @State var easterEggCount: Int = 0
     
     private func bigTitle() -> some View {
-        HStack {
-            Image(systemName: "gamecontroller")
-            Text("VGTrivia")
-                .font(.appBigTitle)
+        Button(action: {
+            if easterEggCount > 5 {
+                easterEggCount += 1
+            } else {
+                // go to easter egg
+            }
+        }) {
+            HStack {
+                Image(systemName: "gamecontroller.circle.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 40)
+                Text("VGTrivia")
+            }
         }
-        .foregroundStyle(.charcoal)
-        .padding(.vertical)
-        .padding(.horizontal, 30)
-        .background(
-            RadialGradient(colors:[.babyBlue, .peach], center: .center, startRadius: 0, endRadius: 150)
-        )
-        .clipShape(.capsule)
-        .shadow(radius: 3)
+        .buttonStyle(BigTitleButton())
     }
     private func numberOfQuestions() -> some View {
         CardView {

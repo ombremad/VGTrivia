@@ -15,6 +15,7 @@ extension Font {
     static let appBigTitle = Font.custom("MozillaHeadlineVF-ExpandedBold", size: 42)
     static let cardContent = Font.custom("MozillaTextVF-Regular", size: 16)
     static let cardCallout = Font.custom("MozillaTextVF-SemiBold", size: 14)
+    static let emojiBig = Font.custom("MozillaTextVF-Regular", size: 64)
     static let score = Font.custom("MozillaTextVF-SemiBold", size: 16)
     static let scoreBig = Font.custom("MozillaTextVF-SemiBold", size: 20)
 }

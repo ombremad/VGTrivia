@@ -40,6 +40,25 @@ struct TriviaButton: ButtonStyle {
     }
 }
 
+struct BigTitleButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(.charcoal)
+            .padding(.vertical)
+            .padding(.horizontal, 30)
+            .background(
+                RadialGradient(colors:[.babyBlue, .peach], center: .center, startRadius: 0, endRadius: 150)
+            )
+            .clipShape(.capsule)
+            .shadow(radius: 3)
+            .font(.appBigTitle)
+            .lineLimit(1)
+            .offset(y: configuration.isPressed ? -5 : 0)
+            .scaleEffect (configuration.isPressed ? 0.9 : 1)
+            .animation(.easeInOut(duration: 0.05), value: configuration.isPressed)
+    }
+}
+
 #Preview {
     TestView()
         .background(Color.background)
