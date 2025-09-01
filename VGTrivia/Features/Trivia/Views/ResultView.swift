@@ -10,6 +10,8 @@ import SwiftUI
 struct ResultView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
     @Binding var navigationPath: NavigationPath
+    @State var scoreOffset: CGFloat = 500
+    @State var commentOffset: CGFloat = 500
     
     var body: some View {
         VStack(spacing: 25) {
@@ -20,6 +22,7 @@ struct ResultView: View {
                 Text("\(triviaViewModel.score.description) / \(triviaViewModel.questionPool.count)")
                     .font(.scoreBig)
             }
+            .offset(x: scoreOffset)
             VStack(spacing:10) {
                 if triviaViewModel.score != 0 && triviaViewModel.questionPool.count != 0 {
                     switch Double(triviaViewModel.score / triviaViewModel.questionPool.count) {
@@ -43,7 +46,7 @@ struct ResultView: View {
                                 .font(.emojiBig)
                             Text("YOU'RE WINNER!")
                                 .font(.appBigTitle)
-                            Text("You nailed a perfect score, so I'm going to assume that you got that reference, too.")
+                            Text("Your knowledge is flawless! You nailed a perfect score, so I'm going to assume that you got that reference, too.")
                         default:
                             Text("Error.")
                     }
@@ -53,6 +56,7 @@ struct ResultView: View {
                     Text("Error.")
                 }
             }
+            .offset(x: commentOffset)
             .padding(.horizontal, 32)
             .multilineTextAlignment(.center)
             Spacer()
@@ -66,6 +70,14 @@ struct ResultView: View {
         .padding()
         .navigationBarBackButtonHidden()
         .background(Color.background)
+        .onAppear {
+            withAnimation(.bouncy(duration: 0.5, extraBounce: 0.25).delay(0.25)) {
+                scoreOffset = 0
+            }
+            withAnimation(.bouncy(duration: 0.5, extraBounce: 0.25).delay(1.5)) {
+                commentOffset = 0
+            }
+        }
     }
 }
 
