@@ -14,10 +14,10 @@ struct HomeView: View {
     
     private func bigTitle() -> some View {
         Button(action: {
-            if easterEggCount > 5 {
-                easterEggCount += 1
+            if easterEggCount > 3 {
+                navigationPath.append(DestinationViews.easterEgg)
             } else {
-                // go to easter egg
+                easterEggCount += 1
             }
         }) {
             HStack {
@@ -57,7 +57,7 @@ struct HomeView: View {
         }
         .buttonStyle(TriviaButton())
     }
-    
+
     var body: some View {
         NavigationStack(path: $navigationPath) {
             VStack(spacing: 50) {
@@ -76,7 +76,10 @@ struct HomeView: View {
                     case .round:
                         RoundView(navigationPath: $navigationPath)
                             .environment(triviaViewModel)
-                        case .result: ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
+                    case .result:
+                        ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
+                    case .easterEgg:
+                        EasterEggView(navigationPath: $navigationPath).environment(triviaViewModel)
                 }
             }
             .background(Color.background)
