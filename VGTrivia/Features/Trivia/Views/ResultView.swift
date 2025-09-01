@@ -12,15 +12,15 @@ struct ResultView: View {
     @Binding var navigationPath: NavigationPath
     
     var body: some View {
-        VStack {
+        VStack(spacing: 25) {
             Spacer()
-                Text("Your score")
-                .font(.appTitle)
-            HStack {
-                Text(triviaViewModel.score.description)
-                Text("/")
-                Text(triviaViewModel.questionPool.count.description)
+            VStack(spacing: 10) {
+                Text("Final score")
+                    .font(.appTitle)
+                Text("\(triviaViewModel.score.description) / \(triviaViewModel.questionPool.count)")
+                    .font(.scoreBig)
             }
+            Text("You did great!")
             Spacer()
             Button(action: {
                 navigationPath = NavigationPath()
@@ -31,12 +31,12 @@ struct ResultView: View {
         }
         .padding()
         .navigationBarBackButtonHidden()
+        .background(Color.background)
     }
 }
 
 #Preview {
     ResultView(navigationPath: .constant(NavigationPath()))
         .environment(TriviaViewModel())
-        .background(Color.background)
         .font(.appBody)
 }

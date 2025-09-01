@@ -24,6 +24,7 @@ struct HomeView: View {
             RadialGradient(colors:[.babyBlue, .peach], center: .center, startRadius: 0, endRadius: 150)
         )
         .clipShape(.capsule)
+        .shadow(radius: 3)
     }
     private func numberOfQuestions() -> some View {
         CardView {
@@ -62,7 +63,7 @@ struct HomeView: View {
                 Spacer()
                 startButton()
             }
-            .padding(.horizontal)
+            .padding()
             .onAppear {
                 triviaViewModel.resetRound()
             }
@@ -74,7 +75,7 @@ struct HomeView: View {
                         case .result: ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
                 }
             }
-            .background(DotPatternBackground(offset: 0)).ignoresSafeArea(.all)
+            .background(Color.background)
         }
     }
 }

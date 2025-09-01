@@ -20,16 +20,16 @@ struct TriviaButton: ButtonStyle {
             .lineLimit(2)
             .multilineTextAlignment(.center)
             .padding()
-            .foregroundColor(.foreground.opacity(0.9))
+            .foregroundColor(.charcoal)
             .background(backgroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(.foreground.opacity(0.9), lineWidth: 2)
+                    .stroke(.charcoal.opacity(0.9), lineWidth: 2)
             )
             .cornerRadius(20)
             .font(.appButton)
             .shadow(
-                color: .foreground.opacity(0.9),
+                color: .charcoal.opacity(0.9),
                 radius: 0,
                 x: 0,
                 y: configuration.isPressed ? 10 : 3,

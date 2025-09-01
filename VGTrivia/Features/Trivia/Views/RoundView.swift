@@ -161,12 +161,12 @@ struct RoundView: View {
             triviaViewModel.newRound()
             }
         .navigationBarBackButtonHidden()
+        .background(Color.background)
     }
 }
 
 #Preview {
     RoundView(navigationPath: .constant(NavigationPath()))
         .environment(TriviaViewModel())
-        .background(Color.background)
         .font(.appBody)
 }
