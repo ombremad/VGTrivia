@@ -14,34 +14,56 @@ struct EasterEggView: View {
     
     // Music
     @State private var musicPlayer = MusicPlayer()
-    func playMusic() {
-        var music: AVAudioPlayer?
-        if let url = Bundle.main.url(forResource: "Music/sound", withExtension: "m4a") {
-            do {
-                music = try AVAudioPlayer(contentsOf: url)
-                music?.prepareToPlay()
-                music?.play()
-            } catch {
-                print("Error playing sound: \(error.localizedDescription)")
-            }
-        } else {
-            print("Sound file not found.")
-        }
-    }
 
     // Animations
-    @State private var offset: CGFloat = 700
+    @State private var textOffset: CGFloat = 700
+    @State private var textRotationZ: CGFloat = 0
+    @State private var textRotationY: CGFloat = 0
+    @State private var textScaling: CGFloat = 1
     @State private var colorIndex = 0
     private let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .indigo, .purple]
     private func playAnimations() {
-        textBounce()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            textBounce()
+        }
         cycleColors()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 13.7) {
+            textDance()
+        }
     }
     private func textBounce() {
-        offset = 700
+        textOffset = 700
         withAnimation(.bouncy(duration: 0.4, extraBounce: 0.65)) {
-            offset = 0
+            textOffset = 0
         }
+    }
+    private func textDance() {
+        withAnimation(.easeInOut(duration: 0.72)) {
+            textOffset = 30
+        }
+        withAnimation(.easeInOut(duration: 0.72).repeatForever(autoreverses: true)) {
+            textOffset = -40
+        }
+        withAnimation(.easeInOut(duration: 0.4)) {
+            textRotationY = -45
+        }
+        withAnimation(.easeInOut(duration: 0.4).repeatForever(autoreverses: true)) {
+            textRotationY = 32
+        }
+        withAnimation(.easeInOut(duration: 1.3)) {
+            textRotationZ = -12
+        }
+        withAnimation(.easeInOut(duration: 1.3).repeatForever(autoreverses: true)) {
+            textRotationZ = 16
+        }
+        withAnimation(.easeInOut(duration: 1)) {
+            textScaling = 0.9
+        }
+        withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+            textScaling = 1.8
+        }
+    }
+    private func textScale() {
     }
     private func cycleColors() {
         withAnimation(.linear(duration: 0.2)) {
@@ -59,10 +81,17 @@ struct EasterEggView: View {
                 Text("It's a secret\nto everybody.")
                     .font(.appTitle)
                     .multilineTextAlignment(.center)
-                    .offset(y: offset)
+                    .offset(y: textOffset)
+                    .rotation3DEffect(.degrees(textRotationY), axis: (x: 0, y:1, z:0))
+                    .rotation3DEffect(.degrees(textRotationZ), axis: (x: 0, y:0, z:1))
+                    .scaleEffect(textScaling)
+            }
+            .onTapGesture {
+                textBounce()
             }
             Spacer()
             Button(action: {
+                musicPlayer.player?.stop()
                 navigationPath = NavigationPath()
             }) {
                 Text("Back")
@@ -79,7 +108,6 @@ struct EasterEggView: View {
             }
     }
 }
-
 
 #Preview {
     EasterEggView(navigationPath: .constant(NavigationPath()))
