@@ -63,6 +63,8 @@ struct ResultView: View {
             Text("End game")
         }
         .buttonStyle(TriviaButton(backgroundColor: .butter))
+        .frame(height: 110)
+        .clipped()
     }
     
     var body: some View {

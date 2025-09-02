@@ -97,6 +97,8 @@ struct EasterEggView: View {
                 Text("Back")
             }
             .buttonStyle(TriviaButton(backgroundColor: .pearl))
+            .frame(height: 110)
+            .clipped()
         }
             .padding()
             .navigationBarBackButtonHidden()

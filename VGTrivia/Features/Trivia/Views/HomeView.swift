@@ -56,6 +56,8 @@ struct HomeView: View {
             Text("Start game")
         }
         .buttonStyle(TriviaButton())
+        .frame(height: 110)
+        .clipped()
     }
 
     var body: some View {
