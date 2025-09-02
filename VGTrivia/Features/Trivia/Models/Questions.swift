@@ -343,4 +343,40 @@ let questions: [Question] = [
         correctAnswer: "Norse",
         explanation: "In the 2018 reboot/sequel of the series, the aging son of Zeus has come short of Olympian gods to kill. He now wanders the Norse pantheon, in the realm of **Midgard**, with his son Atreus.",
     ),
+    Question(
+            title: "Press F",
+            content: "In **Call of Duty: Advanced Warfare (2014)**, players mocked a scene where you are prompted to press a key to...",
+            answers: [
+                "Pay respects",
+                "Reload your weapon",
+                "Shake hands",
+                "Close a door",
+            ],
+            correctAnswer: "Pay respects",
+            explanation: "During a funeral cutscene, the game literally told PC players to **\"Press F to Pay Respects\"**, which instantly became a meme still referenced online today.",
+        ),
+        Question(
+            title: "Phone home",
+            content: "The infamous game **E.T. the Extra-Terrestrial (1982)** is often blamed for...",
+            answers: [
+                "The US video game crash of 1983",
+                "Introducing microtransactions",
+                "Causing epilepsy scandals",
+                "Being banned in Japan",
+            ],
+            correctAnswer: "The US video game crash of 1983",
+            explanation: "Millions of unsold E.T. cartridges were **buried in a New Mexico landfill**. The US video game industry collapsed soon after — though saying it's all E.T.'s fault is a bit of a stretch.",
+        ),
+    Question(
+            title: "No items!",
+            content: "In competitive **Super Smash Bros. Melee (2001)**, almost all tournaments allow only this single stage to be picked...",
+            answers: [
+                "Final Destination",
+                "Battlefield",
+                "Pokémon Stadium",
+                "Dream Land",
+            ],
+            correctAnswer: "Final Destination",
+            explanation: "Flat, simple, no hazards: Final Destination became the ultimate neutral stage in Smash culture. The meme **\"Fox only, no items, Final Destination\"** still lingers in gaming circles.",
+        ),
 ]

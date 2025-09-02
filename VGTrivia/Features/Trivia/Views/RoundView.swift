@@ -13,6 +13,10 @@ struct RoundView: View {
     
     @State private var exitAlert = false
     
+    func getRoundProgression() -> CGFloat {
+        return CGFloat(triviaViewModel.questionPool.count * (triviaViewModel.currentQuestion + 1))
+    }
+    
     private func header() -> some View {
         VStack {
             HStack(alignment: .bottom) {
@@ -36,18 +40,23 @@ struct RoundView: View {
                     Text("Score : ")
                     Text(triviaViewModel.score.description)
                         .font(.scoreBig)
+                        .offset(y: 1)
                 }
+                .frame(width: 100)
                 Spacer()
                 HStack(alignment: .bottom) {
                     Text("Question :")
                     Text((triviaViewModel.currentQuestion+1).description)
                         .font(.scoreBig)
+                        .frame(width: 30)
+                        .offset(y: 1)
                     Text("/ \(triviaViewModel.questionPool.count)")
                         .font(.score)
                 }
             }
             progressBar()
         }
+        .padding(.top, 24)
     }
     private func progressBar() -> some View {
         ZStack {
@@ -161,12 +170,12 @@ struct RoundView: View {
             triviaViewModel.newRound()
             }
         .navigationBarBackButtonHidden()
+        .background(Color.background)
     }
 }
 
 #Preview {
     RoundView(navigationPath: .constant(NavigationPath()))
         .environment(TriviaViewModel())
-        .background(Color.background)
         .font(.appBody)
 }

@@ -15,17 +15,19 @@ struct CardView<Content: View>: View {
     }
     
     var body: some View {
-        VStack(spacing:14) {
+        VStack(spacing:12) {
             RainbowStack()
             Spacer()
             self.content
             Spacer()
         }
         .multilineTextAlignment(.leading)
+        .lineSpacing(1.6)
         .foregroundStyle(Color.foreground)
-        .background(Color.foreground.opacity(0.05))
+        .background(Color.background)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .frame(height: 320)
+        .shadow(radius: 3)
     }
 }
 

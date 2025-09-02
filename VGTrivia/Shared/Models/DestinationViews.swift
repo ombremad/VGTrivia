@@ -8,4 +8,5 @@
 enum DestinationViews: Hashable {
     case round
     case result
+    case easterEgg
 }
