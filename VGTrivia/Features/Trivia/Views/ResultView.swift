@@ -25,18 +25,18 @@ struct ResultView: View {
     private func finalComment() -> some View {
         VStack(spacing:10) {
             if triviaViewModel.score != 0 && triviaViewModel.questionPool.count != 0 {
-                switch Double(triviaViewModel.score / triviaViewModel.questionPool.count) {
-                    case 0..<0.33:
+                switch Double(triviaViewModel.score) / Double(triviaViewModel.questionPool.count) {
+                    case 0..<0.3:
                         Text("💩")
                             .font(.emojiBig)
                         Text("Don't beat yourself up about it, this game was intended to be quite hard.")
                         Text("I hope you still managed to learn some fun facts along the way!")
-                    case 0.33..<0.66:
+                    case 0.3..<0.6:
                         Text("✊")
                             .font(.emojiBig)
                         Text("You seem to have a bit of knowledge going on, but not quite enough to really call yourself a VG trivia pro!")
                         Text("It's a tough game, you can already be quite proud of yourself.")
-                    case 0.66..<1:
+                    case 0.6..<1:
                         Text("👾")
                             .font(.emojiBig)
                         Text("Wow! You were born with a gamepad in your hands, obviously. Or a keyboard. Or an arcade stick. Or was it a Game Boy?")
@@ -50,10 +50,6 @@ struct ResultView: View {
                     default:
                         Text("Error.")
                 }
-            } else {
-                Text("❌")
-                    .font(.emojiBig)
-                Text("Error.")
             }
         }
         .offset(x: commentOffset)

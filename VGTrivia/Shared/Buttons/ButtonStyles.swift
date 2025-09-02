@@ -47,7 +47,7 @@ struct BigTitleButton: ButtonStyle {
             .padding(.vertical)
             .padding(.horizontal, 30)
             .background(
-                RadialGradient(colors:[.babyBlue, .peach], center: .center, startRadius: 0, endRadius: 150)
+                RadialGradient(colors:[.pearl, .babyBlue, .minty, .peach], center: .center, startRadius: 100, endRadius: 150)
             )
             .clipShape(.capsule)
             .shadow(radius: 3)
