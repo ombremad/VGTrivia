@@ -15,6 +15,7 @@ The primary goal was to get a basic trivia engine running. I made it about video
 - **Randomization**: the game picks questions at random from a pool of 30 questions. The answers' order is also randomized, unless otherwise noted in the question.
 - **Score**: the game keeps track of your score and gives you an evaluation on the result screen at the end of the round.
 - **Explanations**: every question comes with a bit of trivia about the answer, no matter if you were right or wrong.
+- **Dark mode**: iOS light and dark modes are equally supported.
 - **Easter egg**: you'll have to find out by yourself!
 
 *Some previews screenshots can be found [at the end of this README](#screenshots).*
