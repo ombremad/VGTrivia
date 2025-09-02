@@ -48,7 +48,7 @@ struct RoundView: View {
                     Text("Question :")
                     Text((triviaViewModel.currentQuestion+1).description)
                         .font(.scoreBig)
-                        .frame(width: 24)
+                        .frame(width: 30)
                         .offset(y: 1)
                     Text("/ \(triviaViewModel.questionPool.count)")
                         .font(.score)
