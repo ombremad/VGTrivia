@@ -15,13 +15,15 @@ struct EasterEggView: View {
     // Music
     @State private var musicPlayer = MusicPlayer()
 
-    // Animations
+    // Animation values
     @State private var textOffset: CGFloat = 700
     @State private var textRotationZ: CGFloat = 0
     @State private var textRotationY: CGFloat = 0
     @State private var textScaling: CGFloat = 1
     @State private var colorIndex = 0
     private let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .indigo, .purple]
+    
+    // Animation functions
     private func playAnimations() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             textBounce()
@@ -63,8 +65,6 @@ struct EasterEggView: View {
             textScaling = 1.8
         }
     }
-    private func textScale() {
-    }
     private func cycleColors() {
         withAnimation(.linear(duration: 0.2)) {
             colorIndex = (colorIndex + 1) % colors.count
@@ -100,6 +100,7 @@ struct EasterEggView: View {
         }
             .padding()
             .navigationBarBackButtonHidden()
+            .statusBarHidden()
             .background(colors[colorIndex])
             .foregroundStyle(.pearl)
             .onAppear {
