@@ -73,38 +73,46 @@ struct EasterEggView: View {
             cycleColors()
         }
     }
+    
+    // Extracted views
+    private func secretText() -> some View {
+        VStack(spacing: 16) {
+            Text("It's a secret\nto everybody.")
+                .font(.appTitle)
+                .foregroundStyle(.pearl)
+                .multilineTextAlignment(.center)
+                .offset(y: textOffset)
+                .rotation3DEffect(.degrees(textRotationY), axis: (x: 0, y:1, z:0))
+                .rotation3DEffect(.degrees(textRotationZ), axis: (x: 0, y:0, z:1))
+                .scaleEffect(textScaling)
+        }
+        .onTapGesture {
+            textBounce()
+        }
+    }
+    private func backButton() -> some View {
+        Button(action: {
+            musicPlayer.player?.stop()
+            navigationPath = NavigationPath()
+        }) {
+            Text("Back")
+        }
+        .buttonStyle(TriviaButton(backgroundColor: .pearl))
+        .frame(height: 110)
+        .clipped()
+    }
         
     var body: some View {
         VStack {
             Spacer()
-            VStack(spacing: 16) {
-                Text("It's a secret\nto everybody.")
-                    .font(.appTitle)
-                    .multilineTextAlignment(.center)
-                    .offset(y: textOffset)
-                    .rotation3DEffect(.degrees(textRotationY), axis: (x: 0, y:1, z:0))
-                    .rotation3DEffect(.degrees(textRotationZ), axis: (x: 0, y:0, z:1))
-                    .scaleEffect(textScaling)
-            }
-            .onTapGesture {
-                textBounce()
-            }
+            secretText()
             Spacer()
-            Button(action: {
-                musicPlayer.player?.stop()
-                navigationPath = NavigationPath()
-            }) {
-                Text("Back")
-            }
-            .buttonStyle(TriviaButton(backgroundColor: .pearl))
-            .frame(height: 110)
-            .clipped()
+            backButton()
         }
             .padding()
             .navigationBarBackButtonHidden()
             .statusBarHidden()
             .background(colors[colorIndex])
-            .foregroundStyle(.pearl)
             .onAppear {
                 musicPlayer.playSound()
                 playAnimations()

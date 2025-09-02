@@ -76,8 +76,7 @@ struct HomeView: View {
             .navigationDestination(for: DestinationViews.self) { destination in
                 switch destination {
                     case .round:
-                        RoundView(navigationPath: $navigationPath)
-                            .environment(triviaViewModel)
+                        RoundView(navigationPath: $navigationPath).environment(triviaViewModel)
                     case .result:
                         ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
                     case .easterEgg:
