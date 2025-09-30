@@ -58,9 +58,3 @@ struct BigTitleButton: ButtonStyle {
             .animation(.easeInOut(duration: 0.05), value: configuration.isPressed)
     }
 }
-
-#Preview {
-    TestView()
-        .background(Color.background)
-        .font(.appBody)
-}
