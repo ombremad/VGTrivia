@@ -77,23 +77,28 @@ struct RoundView: View {
     }
     private func questionCard() -> some View {
         CardView {
-            Text(triviaViewModel.getQuestion()?.title ?? "")
-                .font(.appTitle)
-                .padding(.horizontal, 12)
-            if let media = triviaViewModel.getQuestion()?.media,
-               let url = URL(string: media.url) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    ProgressView()
+            if let question = triviaViewModel.getQuestion() {
+                Text(question.title)
+                    .font(.appTitle)
+                    .padding(.horizontal, 12)
+                if let media = question.media,
+                   let url = URL(string: media.url) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(maxHeight: 300)
                 }
-                .frame(maxHeight: 300)
+                Text(question.content)
+                    .font(.cardContent)
+                    .padding(.horizontal, 20)
             }
-            Text(triviaViewModel.getQuestion()?.content ?? "")
-                .font(.cardContent)
-                .padding(.horizontal, 20)
+            else {
+                EmptyView()
+            }
         }
     }
     private func explanationCard() -> some View {
