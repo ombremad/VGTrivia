@@ -42,7 +42,6 @@ struct RoundView: View {
                         .font(.scoreBig)
                         .offset(y: 1)
                 }
-                .frame(width: 100)
                 Spacer()
                 HStack(alignment: .bottom) {
                     Text("Question :")
@@ -107,8 +106,8 @@ struct RoundView: View {
         }
     }
     private func answerButtons() -> some View {
-        VStack(spacing: 25) {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 10) {
+        VStack {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
                 ForEach(triviaViewModel.getQuestion()?.answers ?? [], id:\.self) { answer in
                     Button(action: {
                         triviaViewModel.hasAnswered ? nil : triviaViewModel.checkAnswer(answer)
@@ -137,14 +136,12 @@ struct RoundView: View {
                 )
             }
         }
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 70)
     }
     
     var body: some View {
-        VStack(spacing:25) {
+        VStack(spacing:24) {
             header()
-            Spacer()
             ZStack {
                 if triviaViewModel.hasAnswered {
                     explanationCard()
@@ -162,7 +159,6 @@ struct RoundView: View {
             }
             .animation(.easeInOut(duration: 0.3), value: triviaViewModel.hasAnswered)
             answerButtons()
-            Spacer()
             nextButton()
         }
         .padding()

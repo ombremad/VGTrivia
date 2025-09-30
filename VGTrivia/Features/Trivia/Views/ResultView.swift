@@ -56,24 +56,23 @@ struct ResultView: View {
         .padding(.horizontal, 32)
         .multilineTextAlignment(.center)
     }
-    private func endGame() -> some View {
+    private func endButton() -> some View {
         Button(action: {
             navigationPath = NavigationPath()
         }) {
             Text("End game")
         }
         .buttonStyle(TriviaButton(backgroundColor: .butter))
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 60)
     }
     
     var body: some View {
-        VStack(spacing: 25) {
+        VStack(spacing: 24) {
             Spacer()
             finalScore()
             finalComment()
             Spacer()
-            endGame()
+            endButton()
         }
         .padding()
         .navigationBarBackButtonHidden()

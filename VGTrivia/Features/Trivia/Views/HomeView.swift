@@ -32,7 +32,7 @@ struct HomeView: View {
     }
     private func numberOfQuestions() -> some View {
         CardView {
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
                 Text("Number of questions")
                     .font(.appTitle)
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
@@ -56,15 +56,15 @@ struct HomeView: View {
             Text("Start game")
         }
         .buttonStyle(TriviaButton())
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 60)
     }
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            VStack(spacing: 50) {
+            VStack(spacing: 24) {
                 Spacer()
                 bigTitle()
+                Spacer()
                 numberOfQuestions()
                 Spacer()
                 startButton()
