@@ -166,6 +166,10 @@ let questions: [Question] = [
     Question(
         title: "Four in a square",
         content: "In **Minecraft (2011)**, you need them to make a crafting table...",
+        media: QuestionMedia(
+            type: .image,
+            url: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b7/Crafting_Table_JE4_BE3.png"
+        ),
         answers: [
             "Wooden planks",
             "Logs",

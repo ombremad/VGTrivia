@@ -80,6 +80,17 @@ struct RoundView: View {
             Text(triviaViewModel.getQuestion()?.title ?? "")
                 .font(.appTitle)
                 .padding(.horizontal, 12)
+            if let media = triviaViewModel.getQuestion()?.media,
+               let url = URL(string: media.url) {
+                AsyncImage(url: url) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(maxHeight: 300)
+            }
             Text(triviaViewModel.getQuestion()?.content ?? "")
                 .font(.cardContent)
                 .padding(.horizontal, 20)
