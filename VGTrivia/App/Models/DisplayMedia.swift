@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct QuestionMedia {
+struct DisplayMedia {
     let type: MediaType
     let url: String
 }

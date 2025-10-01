@@ -77,11 +77,11 @@ struct RoundView: View {
     }
     private func questionCard() -> some View {
         CardView {
-            if let question = triviaViewModel.getQuestion() {
-                Text(question.title)
+            if let q = triviaViewModel.getQuestion() {
+                Text(q.title)
                     .font(.appTitle)
                     .padding(.horizontal, 12)
-                if let media = question.media,
+                if let media = q.media,
                    let url = URL(string: media.url) {
                     AsyncImage(url: url) { image in
                         image
@@ -92,7 +92,7 @@ struct RoundView: View {
                     }
                     .frame(maxHeight: 300)
                 }
-                Text(question.content)
+                Text(q.content)
                     .font(.cardContent)
                     .padding(.horizontal, 20)
             }
@@ -103,24 +103,30 @@ struct RoundView: View {
     }
     private func explanationCard() -> some View {
         CardView {
-            HStack {
-                Image(systemName: triviaViewModel.hasAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
-                Text(triviaViewModel.hasAnsweredCorrectly  ? "You guessed it!" : "Wrong! The answer was")
+            if let q = triviaViewModel.getQuestion() {
+                HStack {
+                    Image(systemName: triviaViewModel.hasAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    Text(triviaViewModel.hasAnsweredCorrectly  ? "You guessed it!" : "Wrong! The answer was")
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 4)
+                .foregroundStyle(Color.foreground)
+                .font(.cardCallout)
+                .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
+                .clipShape(.capsule)
+                Text(q.correctAnswer)
+                    .font(.appTitle)
+                    .padding(.horizontal, 12)
+                Text(q.explanation)
+                    .font(.cardContent)
+                    .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 4)
-            .foregroundStyle(Color.foreground)
-            .font(.cardCallout)
-            .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
-            .clipShape(.capsule)
-            Text(triviaViewModel.getQuestion()?.correctAnswer ?? "")
-                .font(.appTitle)
-                .padding(.horizontal, 12)
-            Text(triviaViewModel.getQuestion()?.explanation ?? "")
-                .font(.cardContent)
-                .padding(.horizontal, 20)
+            else {
+                EmptyView()
+            }
         }
     }
+    
     private func answerButtons() -> some View {
         VStack {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {

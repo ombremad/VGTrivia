@@ -13,7 +13,7 @@ let questions: [Question] = [
     Question(
         title: "Test question",
         content: "This contains an image",
-        media: QuestionMedia(
+        media: DisplayMedia(
             type: .image,
             url: baseAssetURL + "crafting_table.webp"
         ),
@@ -30,7 +30,7 @@ let questions: [Question] = [
 //    Question(
 //        title: "Four in a square",
 //        content: "In **Minecraft (2011)**, you need them to make a crafting table...",
-//        media: QuestionMedia(
+//        media: DisplayMedia(
 //            type: .image,
 //            url: baseAssetURL + "crafting_table.webp"
 //        ),
@@ -43,18 +43,18 @@ let questions: [Question] = [
 //        correctAnswer: "Wooden planks",
 //        explanation: "Any sort of wooden plank will do, as long as you have four of them, and put them in a 2x2 square.",
 //    ),
-//    Question(
-//        title: "Mario",
-//        content: "What's the official last name of famous Nintendo's character, **Mario**?",
-//        answers: [
-//            "Mario",
-//            "Giamatti",
-//            "Letsago",
-//            "Toadstool",
-//        ],
-//        correctAnswer: "Mario",
-//        explanation: "This weird last name was coined in the infamous Super Mario Bros. 1993 movie. At first, the maker of Mario, Shigeru Miyamoto, found it rather ridiculous, but in 2015, he admitted that Mario's full name was indeed **\"Mario Mario\"**.",
-//    ),
+    Question(
+        title: "Mario",
+        content: "What's the official last name of famous Nintendo's character, **Mario**?",
+        answers: [
+            "Mario",
+            "Giamatti",
+            "Letsago",
+            "Toadstool",
+        ],
+        correctAnswer: "Mario",
+        explanation: "This weird last name was coined in the infamous Super Mario Bros. 1993 movie. At first, the maker of Mario, Shigeru Miyamoto, found it rather ridiculous, but in 2015, he admitted that Mario's full name was indeed **\"Mario Mario\"**.",
+    ),
 //    Question(
 //        title: "Shake it",
 //        content: "This **1999 rhythm game** features a monkey playing maracas, wearing cliché Latin-American attire...",

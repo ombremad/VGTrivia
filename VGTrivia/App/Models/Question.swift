@@ -11,7 +11,7 @@ struct Question: Identifiable {
     let id = UUID()
     let title: String
     let content: LocalizedStringKey
-    let media: QuestionMedia?
+    let media: DisplayMedia?
     var answers: [String]
     let correctAnswer: String
     let explanation: LocalizedStringKey
@@ -20,7 +20,7 @@ struct Question: Identifiable {
     init(
         title: String,
         content: LocalizedStringKey,
-        media: QuestionMedia? = nil,
+        media: DisplayMedia? = nil,
         answers: [String],
         correctAnswer: String,
         explanation: LocalizedStringKey,

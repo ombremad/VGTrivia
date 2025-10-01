@@ -19,8 +19,3 @@ extension Font {
     static let score = Font.custom("MozillaTextVF-SemiBold", size: 16)
     static let scoreBig = Font.custom("MozillaTextVF-SemiBold", size: 20)
 }
-
-#Preview {
-    TestView()
-        .font(.appBody)
-}
