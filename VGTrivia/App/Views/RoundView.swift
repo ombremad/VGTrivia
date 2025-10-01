@@ -80,7 +80,6 @@ struct RoundView: View {
             if let q = triviaViewModel.getQuestion() {
                 Text(q.title)
                     .font(.appTitle)
-                    .padding(.horizontal, 12)
                 if let media = q.media,
                    let url = URL(string: media.url) {
                     AsyncImage(url: url) { image in
@@ -94,7 +93,6 @@ struct RoundView: View {
                 }
                 Text(q.content)
                     .font(.cardContent)
-                    .padding(.horizontal, 20)
             }
             else {
                 EmptyView()
@@ -108,18 +106,16 @@ struct RoundView: View {
                     Image(systemName: triviaViewModel.hasAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
                     Text(triviaViewModel.hasAnsweredCorrectly  ? "You guessed it!" : "Wrong! The answer was")
                 }
-                .padding(.horizontal, 14)
-                .padding(.vertical, 4)
-                .foregroundStyle(Color.foreground)
-                .font(.cardCallout)
-                .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
-                .clipShape(.capsule)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 4)
+                    .foregroundStyle(Color.foreground)
+                    .font(.cardCallout)
+                    .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
+                    .clipShape(.capsule)
                 Text(q.correctAnswer)
                     .font(.appTitle)
-                    .padding(.horizontal, 12)
                 Text(q.explanation)
                     .font(.cardContent)
-                    .padding(.horizontal, 20)
             }
             else {
                 EmptyView()
