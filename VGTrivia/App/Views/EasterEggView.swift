@@ -6,30 +6,12 @@
 //
 
 import SwiftUI
-import AVFoundation
+import AVKit
 
 struct EasterEggView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
     @Binding var navigationPath: NavigationPath
     
-    // Music
-    class MusicPlayer {
-        var player: AVAudioPlayer?
-
-        func playSound() {
-            if let url = Bundle.main.url(forResource: "calamari", withExtension: "m4a") {
-                do {
-                    player = try AVAudioPlayer(contentsOf: url)
-                    player?.prepareToPlay()
-                    player?.play()
-                } catch {
-                    print("Error playing sound: \(error.localizedDescription)")
-                }
-            } else {
-                print("Sound file not found.")
-            }
-        }
-    }
     @State private var musicPlayer = MusicPlayer()
 
     // Animation values
@@ -128,7 +110,7 @@ struct EasterEggView: View {
             .statusBarHidden()
             .background(colors[colorIndex])
             .onAppear {
-                musicPlayer.playSound()
+//                musicPlayer.playSound()
                 playAnimations()
             }
     }

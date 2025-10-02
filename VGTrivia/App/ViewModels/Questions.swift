@@ -12,7 +12,7 @@ private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/
 let questions: [Question] = [
     Question(
         title: "Test question",
-        content: "This contains an image",
+        content: "This contains an image but also a very long question because I love to talk too much, yes you know I'm just a busy computer doing things to pass the time, and time feels reaaaaally long when you can do trillions of operations in a second...",
         media: DisplayMedia(
             type: .image,
             url: baseAssetURL + "crafting_table.webp"
@@ -43,18 +43,18 @@ let questions: [Question] = [
 //        correctAnswer: "Wooden planks",
 //        explanation: "Any sort of wooden plank will do, as long as you have four of them, and put them in a 2x2 square.",
 //    ),
-    Question(
-        title: "Mario",
-        content: "What's the official last name of famous Nintendo's character, **Mario**?",
-        answers: [
-            "Mario",
-            "Giamatti",
-            "Letsago",
-            "Toadstool",
-        ],
-        correctAnswer: "Mario",
-        explanation: "This weird last name was coined in the infamous Super Mario Bros. 1993 movie. At first, the maker of Mario, Shigeru Miyamoto, found it rather ridiculous, but in 2015, he admitted that Mario's full name was indeed **\"Mario Mario\"**.",
-    ),
+//    Question(
+//        title: "Mario",
+//        content: "What's the official last name of famous Nintendo's character, **Mario**?",
+//        answers: [
+//            "Mario",
+//            "Giamatti",
+//            "Letsago",
+//            "Toadstool",
+//        ],
+//        correctAnswer: "Mario",
+//        explanation: "This weird last name was coined in the infamous Super Mario Bros. 1993 movie. At first, the maker of Mario, Shigeru Miyamoto, found it rather ridiculous, but in 2015, he admitted that Mario's full name was indeed **\"Mario Mario\"**.",
+//    ),
 //    Question(
 //        title: "Shake it",
 //        content: "This **1999 rhythm game** features a monkey playing maracas, wearing cliché Latin-American attire...",

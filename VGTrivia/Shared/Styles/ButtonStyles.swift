@@ -16,7 +16,7 @@ struct TriviaButton: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
+            .frame(maxWidth: .infinity, minHeight: 36, maxHeight: 36)
             .lineLimit(2)
             .multilineTextAlignment(.center)
             .padding()

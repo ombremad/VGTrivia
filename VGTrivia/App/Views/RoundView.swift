@@ -12,6 +12,7 @@ struct RoundView: View {
     @Binding var navigationPath: NavigationPath
     
     @State private var exitAlert = false
+    @State private var isMediaFullscreen = true
     
     func getRoundProgression() -> CGFloat {
         return CGFloat(triviaViewModel.questionPool.count * (triviaViewModel.currentQuestion + 1))
@@ -80,17 +81,7 @@ struct RoundView: View {
             if let q = triviaViewModel.getQuestion() {
                 Text(q.title)
                     .font(.appTitle)
-                if let media = q.media,
-                   let url = URL(string: media.url) {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(maxHeight: 300)
-                }
+                ShowMedia(media: q.media)
                 Text(q.content)
                     .font(.cardContent)
             }
@@ -122,7 +113,6 @@ struct RoundView: View {
             }
         }
     }
-    
     private func answerButtons() -> some View {
         VStack {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
@@ -182,7 +172,7 @@ struct RoundView: View {
         .padding()
         .onAppear {
             triviaViewModel.newRound()
-            }
+        }
         .navigationBarBackButtonHidden()
         .background(Color.background)
     }
