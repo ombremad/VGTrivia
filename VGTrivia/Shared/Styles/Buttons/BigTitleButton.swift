@@ -11,13 +11,6 @@ struct BigTitleButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundStyle(.foreground.opacity(0.7))
-//            .padding(.vertical)
-//            .padding(.horizontal, 30)
-//            .background(
-//                RadialGradient(colors:[.pearl, .babyBlue, .minty, .peach], center: .center, startRadius: 100, endRadius: 150)
-//            )
-//            .clipShape(.capsule)
-//            .shadow(radius: 3)
             .font(.appBigTitle)
             .lineLimit(1)
             .offset(y: configuration.isPressed ? -5 : 0)
