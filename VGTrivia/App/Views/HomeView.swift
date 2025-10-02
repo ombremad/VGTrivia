@@ -61,16 +61,15 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            VStack(spacing: 24) {
-                Spacer()
+            VStack(spacing: 42) {
                 bigTitle()
-                Spacer()
                 numberOfQuestions()
-                Spacer()
                 startButton()
             }
             .padding()
+            .background(Color.background)
             .onAppear {
+                easterEggCount = 0
                 triviaViewModel.resetRound()
             }
             .navigationDestination(for: DestinationViews.self) { destination in
@@ -83,7 +82,6 @@ struct HomeView: View {
                         EasterEggView(navigationPath: $navigationPath).environment(triviaViewModel)
                 }
             }
-            .background(Color.background)
         }
     }
 }
