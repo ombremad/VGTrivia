@@ -66,12 +66,14 @@ struct RoundView: View {
                 GeometryReader { p in
                     Rectangle()
                         .fill(Color.lavender)
-                        .frame(width: p.size.width / CGFloat(triviaViewModel.questionPool.count) * CGFloat(triviaViewModel.currentQuestion+1))
+                        .frame(width: p.size.width * (CGFloat(triviaViewModel.currentQuestion+1) / CGFloat(triviaViewModel.questionPool.count)))
                         .cornerRadius(200)
                         .animation(.bouncy(duration: 0.6, extraBounce: 0.2), value: triviaViewModel.currentQuestion)
-                    Spacer()
+                    Rectangle()
+                        .fill(.foreground.opacity(0.05))
                 }
             }
+            .cornerRadius(200)
         }
         .frame(height: 10)
     }
