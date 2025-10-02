@@ -15,6 +15,7 @@ struct Question: Identifiable {
     var answers: [String]
     let correctAnswer: String
     let explanation: LocalizedStringKey
+    let explanationMedia: DisplayMedia?
     let preventShuffling: Bool
     
     init(
@@ -24,6 +25,7 @@ struct Question: Identifiable {
         answers: [String],
         correctAnswer: String,
         explanation: LocalizedStringKey,
+        explanationMedia: DisplayMedia? = nil,
         preventShuffling: Bool = false
         )
     {
@@ -33,6 +35,7 @@ struct Question: Identifiable {
         self.answers = answers
         self.correctAnswer = correctAnswer
         self.explanation = explanation
+        self.explanationMedia = explanationMedia
         self.preventShuffling = preventShuffling
     }
 }
