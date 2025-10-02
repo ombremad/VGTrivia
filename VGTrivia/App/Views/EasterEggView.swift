@@ -110,7 +110,7 @@ struct EasterEggView: View {
             .statusBarHidden()
             .background(colors[colorIndex])
             .onAppear {
-//                musicPlayer.playSound()
+                musicPlayer.playSound()
                 playAnimations()
             }
     }

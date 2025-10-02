@@ -2,15 +2,17 @@
 //  MusicPlayer.swift
 //  VGTrivia
 //
-//  Created by Anne Ferret on 01/10/2025.
+//  Created by Anne Ferret on 01/09/2025.
 //
 
-import AVKit
+import SwiftUI
+import AVFoundation
 
+@Observable
 class MusicPlayer {
     var player: AVAudioPlayer?
 
-    func playSound(url: URL) {
+    func playSound() {
         if let url = Bundle.main.url(forResource: "calamari", withExtension: "m4a") {
             do {
                 player = try AVAudioPlayer(contentsOf: url)

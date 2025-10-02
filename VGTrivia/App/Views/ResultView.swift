@@ -23,7 +23,7 @@ struct ResultView: View {
         .offset(x: scoreOffset)
     }
     private func finalComment() -> some View {
-        VStack(spacing:10) {
+        VStack(spacing:24) {
             if triviaViewModel.score != 0 && triviaViewModel.questionPool.count != 0 {
                 switch Double(triviaViewModel.score) / Double(triviaViewModel.questionPool.count) {
                     case 0..<0.3:
