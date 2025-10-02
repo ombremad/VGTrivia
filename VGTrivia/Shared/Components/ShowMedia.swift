@@ -19,6 +19,7 @@ struct ShowMedia: View {
                         image
                             .resizable()
                             .scaledToFit()
+                            .cornerRadius(25)
                     } placeholder: {
                         ProgressView()
                     }
@@ -30,5 +31,5 @@ struct ShowMedia: View {
 }
 
 #Preview {
-    ShowMedia(media: DisplayMedia(type: .image, url: "https://github.com/ombremad/VGTrivia/blob/multimedia_questions/VGTrivia_assets/crafting_table.webp?raw=true"))
+    ShowMedia(media: DisplayMedia(type: .image, url: "https://github.com/ombremad/VGTrivia/blob/multimedia_questions/VGTrivia_assets/jean_reno.jpg?raw=true"))
 }

@@ -10,21 +10,21 @@ import SwiftUI
 struct Question: Identifiable {
     let id = UUID()
     let title: String
-    let content: LocalizedStringKey
+    let content: String
     let media: DisplayMedia?
     var answers: [String]
     let correctAnswer: String
-    let explanation: LocalizedStringKey
+    let explanation: String
     let explanationMedia: DisplayMedia?
     let preventShuffling: Bool
     
     init(
         title: String,
-        content: LocalizedStringKey,
+        content: String,
         media: DisplayMedia? = nil,
         answers: [String],
         correctAnswer: String,
-        explanation: LocalizedStringKey,
+        explanation: String,
         explanationMedia: DisplayMedia? = nil,
         preventShuffling: Bool = false
         )

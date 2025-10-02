@@ -81,7 +81,7 @@ struct RoundView: View {
                 Text(q.title)
                     .font(.appTitle)
                 ShowMedia(media: q.media)
-                Text(q.content)
+                Text(LocalizedStringKey(q.content))
                     .font(.cardContent)
             }
             else {
@@ -104,7 +104,8 @@ struct RoundView: View {
                     .clipShape(.capsule)
                 Text(q.correctAnswer)
                     .font(.appTitle)
-                Text(q.explanation)
+                ShowMedia(media: q.explanationMedia)
+                Text(LocalizedStringKey(q.explanation))
                     .font(.cardContent)
             }
             else {

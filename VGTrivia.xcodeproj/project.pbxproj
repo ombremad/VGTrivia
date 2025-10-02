@@ -6,14 +6,7 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		4342F69F2E8E8D1C00A485DE /* crafting_table.webp in Resources */ = {isa = PBXBuildFile; fileRef = 4342F69D2E8E8D1C00A485DE /* crafting_table.webp */; };
-		4342F6A12E8E8D2700A485DE /* jean_reno.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4342F6A02E8E8D2700A485DE /* jean_reno.jpg */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		4342F69D2E8E8D1C00A485DE /* crafting_table.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = crafting_table.webp; sourceTree = "<group>"; };
-		4342F6A02E8E8D2700A485DE /* jean_reno.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jean_reno.jpg; sourceTree = "<group>"; };
 		4371AC182E539B5D00ED0882 /* VGTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VGTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -49,21 +42,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4342F69E2E8E8D1C00A485DE /* VGTrivia_assets */ = {
-			isa = PBXGroup;
-			children = (
-				4342F69D2E8E8D1C00A485DE /* crafting_table.webp */,
-				4342F6A02E8E8D2700A485DE /* jean_reno.jpg */,
-			);
-			path = VGTrivia_assets;
-			sourceTree = "<group>";
-		};
 		4371AC0F2E539B5D00ED0882 = {
 			isa = PBXGroup;
 			children = (
 				4371AC1A2E539B5D00ED0882 /* VGTrivia */,
 				4371AC192E539B5D00ED0882 /* Products */,
-				4342F69E2E8E8D1C00A485DE /* VGTrivia_assets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,8 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4342F6A12E8E8D2700A485DE /* jean_reno.jpg in Resources */,
-				4342F69F2E8E8D1C00A485DE /* crafting_table.webp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
