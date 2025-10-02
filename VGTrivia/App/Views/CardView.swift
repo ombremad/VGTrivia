@@ -39,4 +39,6 @@ struct CardView<Content: View>: View {
     CardView {
         Text("CardView")
     }
+    .frame(height: 300)
+    .padding()
 }

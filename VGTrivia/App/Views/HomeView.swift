@@ -20,11 +20,11 @@ struct HomeView: View {
                 easterEggCount += 1
             }
         }) {
-            HStack {
-                Image(systemName: "gamecontroller.circle.fill")
+            VStack {
+                Image(.titleIcon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 40)
+                    .frame(height: 100)
                 Text("VGTrivia")
             }
         }

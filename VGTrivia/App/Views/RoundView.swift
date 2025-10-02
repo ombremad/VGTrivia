@@ -56,7 +56,6 @@ struct RoundView: View {
             }
             progressBar()
         }
-        .padding(.top, 24)
     }
     private func progressBar() -> some View {
         ZStack {
