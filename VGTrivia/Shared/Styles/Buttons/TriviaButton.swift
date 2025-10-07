@@ -39,3 +39,9 @@ struct TriviaButton: ButtonStyle {
             .animation(.easeInOut(duration: 0.05), value: configuration.isPressed)
     }
 }
+
+#Preview {
+    Button("Bonjour"){}
+        .buttonStyle(TriviaButton(backgroundColor: .pearl))
+        .padding()
+}
