@@ -7,6 +7,6 @@
 
 enum MediaType {
     case image
-//    case video
-//    case sound
+//    case video    // for a later update
+//    case sound    // for a later update
 }
