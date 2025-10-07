@@ -454,4 +454,32 @@ let questions: [Question] = [
             correctAnswer: "Pauline",
             explanation: "The original kidnapped lady in the **Donkey Kong** 1981 arcade game. She made her big comeback in the Mario universe, with newfound mayor role and singing skills, in **Super Mario Odyssey** (2017) and **Donkey Kong Bananza** (2025).",
         ),
+    Question(
+            title: "Life will change",
+            content: "Who's this character?",
+            media: DisplayMedia(
+                type: .image,
+                url: baseAssetURL + "joker.jpg"
+            ),
+            answers: [
+                "Joker",
+                "Dante",
+                "Alucard",
+                "Raiden",
+            ],
+            correctAnswer: "Joker",
+            explanation: "High schooler **Ren Amamiya**, silent protagonist from **Persona 5** (2016), is better known under his viligante codename, Joker. He leads the **Phantom Thieves**, a group of misfits trying to bring justice to the world.",
+        ),
+    Question(
+            title: "The weight of the world",
+            content: "What's one of the main features of 2017's **NieR: Automata**?",
+            answers: [
+                "Multiple endings",
+                "Online co-op missions",
+                "Strategic turn-based combat system",
+                "Interactive sex scenes",
+            ],
+            correctAnswer: "Multiple endings",
+            explanation: "NieR: Automata features **26 different endings**. Five playthroughs are needed to uncover the whole storyline and true ending, while other endings act as alternate storylines, jokes, or easter eggs of sorts.",
+        ),
 ]
