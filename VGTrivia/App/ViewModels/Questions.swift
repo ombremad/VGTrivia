@@ -8,7 +8,7 @@
 //private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/refs/heads/main/external_assets/"
 private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/refs/heads/multimedia_questions/external_assets/"
 
-let questions = questionSeries001 + questionSeries002
+let questions = /*questionSeries001 + */questionSeries002
 
 private let questionSeries002: [Question] = [
     Question(
@@ -139,6 +139,56 @@ private let questionSeries002: [Question] = [
             correctAnswer: "Ness",
             explanation: "The main protagonist of classic SNES role-playing game **EarthBound** (1994), he's probably more recognized nowadays by Western audiences as a playable character from the **Super Smash Bros.** series.",
         ),
+    Question(
+            title: "You didn't think of that mecha...",
+            content: "Which 1993 game is widely credited with popularizing the **first-person shooter** genre on PC?",
+            answers: ["Doom", "Wolfenstein 3D", "Quake", "Duke Nukem 3D"],
+            correctAnswer: "Wolfenstein 3D",
+            explanation: "Wolfenstein 3D (1992) from iD Software is often cited as the foundational FPS. The player controls B.J. Blazkowicz, a Polish Jewish prisoner trying to escape a Nazi castle during WWII."
+    ),
+    Question(
+        title: "Actually not final",
+        content: "Which company developed the original **Final Fantasy** (1987) for the NES?",
+        answers: ["Square", "Enix", "Capcom", "Konami"],
+        correctAnswer: "Square",
+        explanation: "Square (later Square Enix after a 2003 merger) developed Final Fantasy, facing **dire financial difficulties**, as a last effort... hence the name. The \"final\" fantasy turned out very popular, saving the company."
+    ),
+    Question(
+        title: "Survival horror",
+        content: "Which of these games was considered pioneer of the **survival horror** genre?",
+        answers: ["Alone in the Dark", "Resident Evil", "Silent Hill", "Fatal Frame"],
+        correctAnswer: "Alone in the Dark",
+        explanation: "Way back in **1992**, Infogrames' Alone in the Dark introduced many elements that ended up being fundational to the genre: 3D characters over 2D backgrounds, fixed camera angle, limited field of view, powerful enemies, limited ammo... and a mansion."
+    ),
+    Question(
+        title: "The IP destroyer",
+        content: "This director is known for its **terrible movie adaptations** of popular video games, such as House of the Dead, Alone in the Dark, BloodRayne, Postal, Far Cry...",
+        media: DisplayMedia(
+            type: .image,
+            url: baseAssetURL + "uwe_boll.jpg"
+        ),
+        answers: ["Uwe Boll", "Paul W.S. Anderson", "Christophe Gans", "Jeff Fowler"],
+        correctAnswer: "Uwe Boll",
+        explanation: "His films were so comically bad he's kinda hatred amongst gamers. Nowadays, he's hardly allowed to touch a video game IP anymore... but that doesn't prevent him from directing all kinds of other direct-to-video Z movies."
+    ),
+    Question(
+        title: "Indie darling",
+        content: "Which indie title from 2010 is known for its **brutal difficulty** and **fast-paced retro platforming**?",
+        answers: ["Super Meat Boy", "Braid", "Limbo", "Fez"],
+        correctAnswer: "Super Meat Boy",
+        explanation: "Developed by Team Meat, it's famous for its slippery-yet-tight controls and very challenging quick platforming levels. It's one of the gems coming from the ~2008 to 2012 short-lived **indie golden era**."
+    ),
+    Question(
+        title: "Quarter circle",
+        content: "What's the name of this **classic fighting game move**?",
+        media: DisplayMedia(
+            type: .image,
+            url: baseAssetURL + "hadouken.jpg"
+        ),
+        answers: ["Hadouken", "Kamehameha", "Shoryuken", "Shoryueppa"],
+        correctAnswer: "Hadouken",
+        explanation: "This is one of the staples of **Street Fighter II** (1991)'s gameplay, performed by many characters such as Ryu and Ken. It's performed by inputting **↓↘→ + PUNCH**, assuming your opponent stands on your right."
+    ),
 ]
 
 private let questionSeries001: [Question] = [
