@@ -34,11 +34,12 @@ struct HomeView: View {
         }
         .buttonStyle(BigTitleButton())
     }
-    private func numberOfQuestions() -> some View {
+    private func roundLength() -> some View {
         CardView {
             VStack(spacing: 24) {
-                Text("Number of questions")
+                Text("Round length (questions)")
                     .font(.appTitle)
+                    .multilineTextAlignment(.center)
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
                     ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
                         Button(action: {
@@ -69,7 +70,7 @@ struct HomeView: View {
         NavigationStack(path: $navigationPath) {
             VStack(spacing: 42) {
                 bigTitle()
-                numberOfQuestions()
+                roundLength()
                 startButton()
             }
             .padding()
