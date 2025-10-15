@@ -189,6 +189,31 @@ private let questionSeries002: [Question] = [
         correctAnswer: "Hadouken",
         explanation: "This is one of the staples of **Street Fighter II** (1991)'s gameplay, performed by many characters such as Ryu and Ken. It's performed by inputting **↓↘→ + PUNCH**, assuming your opponent stands on your right."
     ),
+    Question(
+        title: "Night reign",
+        content: "Who co-created the world and lore of **Elden Ring** (2022) alongside Hidetaka Miyazaki?",
+        answers: ["George R. R. Martin", "Neil Gaiman", "Robin Hobb", "Brandon Sanderson"],
+        correctAnswer: "George R. R. Martin",
+        explanation: "The famous author of **A Song of Ice and Fire** provided the game's team with a backstory, that could easily be fitted ingame through texts and dialogues. The exact nature of his contribution remains unclear, though.",
+    ),
+    Question(
+        title: "Gotta go fast",
+        content: "In the **speedrunning** community, a run that aims to end the game as fast as possible without any additional completion challenge is called...",
+        answers: ["any%", "no BS", "story clear", "barebone run"],
+        correctAnswer: "any%",
+        explanation: "The most popular speedrunning category of all. **Any percentage of completion** is enough, as long as you get to the ending of the game. And unless it's also a \"glitchless\" run, any trick is fair game.",
+    ),
+    Question(
+        title: "Stupid jellyfish",
+        content: "This is from which video game series?",
+        media: DisplayMedia(
+            type: .image,
+            url: baseAssetURL + "mass_effect.jpg"
+        ),
+        answers: ["Mass Effect", "The Elder Scrolls", "Fallout", "Dragon Age"],
+        correctAnswer: "Mass Effect",
+        explanation: "This pink kinda blob was a Hanar. It's only one of the many species you can encounter in this massive role-playing **space opera** series.",
+    ),
 ]
 
 private let questionSeries001: [Question] = [
