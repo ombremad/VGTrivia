@@ -25,7 +25,11 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 100)
-                Text("VGTrivia")
+                HStack(alignment:.top) {
+                    Text("VGTrivia")
+                    Text("v1.1")
+                        .font(.appBody)
+                }
             }
         }
         .buttonStyle(BigTitleButton())
