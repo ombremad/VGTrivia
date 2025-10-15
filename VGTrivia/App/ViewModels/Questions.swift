@@ -269,7 +269,39 @@ private let questionSeries002: [Question] = [
             "The King of Fighters"
         ],
         correctAnswer: "Tekken",
-        explanation: "Across the many games of the series, the main plot features a never-ending conflict between father **Heihechi Mishima** and his son **Kazuya**.",
+        explanation: "Across the many games of the series, the main plot features a never-ending conflict between father **Heihachi Mishima**, and his son turned half-devil, **Kazuya**.",
+    ),
+    Question(
+        title: "Will it blend?",
+        content: "The **Kingdom Hearts** series is an unexpected crossover between the universes of Final Fantasy and...",
+        answers: [
+            "Disney",
+            "Warhammer 40,000",
+            "Nintendo",
+            "Studio Ghibli"
+        ],
+        correctAnswer: "Disney",
+        explanation: "In 2002, the perspective of classic Final Fantasy characters fighting alongside **Mickey, Donald and Goofy** was seen with a mixture of wariness and disgust. Nowadays, the franchise is well-known, loved, and it has its die-hard fans.",
+    ),
+    Question(
+        title: "Heavy breathing",
+        content: "**SoulCalibur IV** (2008) featured an exclusive Star Wars character for each console it was released on. The PlayStation 3 version got Darth Vader... but what about the **Xbox 360**?",
+        media: DisplayMedia(
+            type: .image,
+            url: baseAssetURL + "starwars_darthvader.jpg"
+        ),
+        answers: [
+            "Yoda",
+            "Luke Skywalker",
+            "Darth Maul",
+            "Palpatine"
+        ],
+        correctAnswer: "Yoda",
+        explanation: "The general ideas was that Yoda reflected Xbox 360's green brand identity, just as Darth Vader reflected PlayStation 3's overall blackness.",
+        explanationMedia: DisplayMedia(
+            type: .image,
+            url: baseAssetURL + "starwars_yoda.jpg"
+        ),
     ),
 ]
 
