@@ -108,7 +108,13 @@ struct EasterEggView: View {
             .padding()
             .navigationBarBackButtonHidden()
             .statusBarHidden()
-            .background(colors[colorIndex])
+            .background {
+                colors[colorIndex]
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        textBounce()
+                    }
+            }
             .onAppear {
                 musicPlayer.playSound()
                 playAnimations()
