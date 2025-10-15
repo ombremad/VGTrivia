@@ -45,6 +45,8 @@ struct HomeView: View {
                         .buttonStyle(TriviaButton(backgroundColor: triviaViewModel.roundLength == index ? .babyBlue : .pearl))
                     }
                 }
+                Text("Currently, the game has a pool of **\(questions.count)** total different questions.")
+                    .multilineTextAlignment(.center)
             }
             .padding()
         }
