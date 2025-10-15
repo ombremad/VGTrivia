@@ -5,10 +5,9 @@
 //  Created by Anne Ferret on 22/08/2025.
 //
 
-//private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/refs/heads/main/external_assets/"
-private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/refs/heads/multimedia_questions/external_assets/"
+private let baseAssetURL = "https://raw.githubusercontent.com/ombremad/VGTrivia/refs/heads/main/external_assets/"
 
-let questions = /*questionSeries001 + */questionSeries002
+let questions = questionSeries001 + questionSeries002
 
 private let questionSeries002: [Question] = [
     Question(
