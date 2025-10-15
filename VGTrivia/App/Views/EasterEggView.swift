@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import AVFoundation
+import AVKit
 
 struct EasterEggView: View {
     @Environment(TriviaViewModel.self) var triviaViewModel
     @Binding var navigationPath: NavigationPath
     
-    // Music
     @State private var musicPlayer = MusicPlayer()
 
     // Animation values
@@ -76,19 +75,17 @@ struct EasterEggView: View {
     
     // Extracted views
     private func secretText() -> some View {
-        VStack(spacing: 16) {
-            Text("It's a secret\nto everybody.")
-                .font(.appTitle)
-                .foregroundStyle(.pearl)
-                .multilineTextAlignment(.center)
-                .offset(y: textOffset)
-                .rotation3DEffect(.degrees(textRotationY), axis: (x: 0, y:1, z:0))
-                .rotation3DEffect(.degrees(textRotationZ), axis: (x: 0, y:0, z:1))
-                .scaleEffect(textScaling)
-        }
-        .onTapGesture {
-            textBounce()
-        }
+        Text("It's a secret\nto everybody.")
+            .font(.appTitle)
+            .foregroundStyle(.pearl)
+            .multilineTextAlignment(.center)
+            .offset(y: textOffset)
+            .rotation3DEffect(.degrees(textRotationY), axis: (x: 0, y:1, z:0))
+            .rotation3DEffect(.degrees(textRotationZ), axis: (x: 0, y:0, z:1))
+            .scaleEffect(textScaling)
+            .onTapGesture {
+                textBounce()
+            }
     }
     private func backButton() -> some View {
         Button(action: {
@@ -98,8 +95,7 @@ struct EasterEggView: View {
             Text("Back")
         }
         .buttonStyle(TriviaButton(backgroundColor: .pearl))
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 60)
     }
         
     var body: some View {
@@ -112,7 +108,13 @@ struct EasterEggView: View {
             .padding()
             .navigationBarBackButtonHidden()
             .statusBarHidden()
-            .background(colors[colorIndex])
+            .background {
+                colors[colorIndex]
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        textBounce()
+                    }
+            }
             .onAppear {
                 musicPlayer.playSound()
                 playAnimations()

@@ -15,18 +15,22 @@ struct CardView<Content: View>: View {
     }
     
     var body: some View {
-        VStack(spacing:12) {
-            RainbowStack()
-            Spacer()
-            self.content
-            Spacer()
+        ZStack {
+            VStack(spacing:0) {
+                RainbowStack()
+                Spacer()
+            }
+            VStack(spacing: 12) {
+                self.content
+            }
+            .padding(18)
         }
         .multilineTextAlignment(.leading)
         .lineSpacing(1.6)
         .foregroundStyle(Color.foreground)
         .background(Color.background)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .frame(height: 320)
+//        .frame(height: 320)
         .shadow(radius: 3)
     }
 }
@@ -35,4 +39,6 @@ struct CardView<Content: View>: View {
     CardView {
         Text("CardView")
     }
+    .frame(height: 300)
+    .padding()
 }

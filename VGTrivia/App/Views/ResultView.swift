@@ -23,8 +23,8 @@ struct ResultView: View {
         .offset(x: scoreOffset)
     }
     private func finalComment() -> some View {
-        VStack(spacing:10) {
-            if triviaViewModel.score != 0 && triviaViewModel.questionPool.count != 0 {
+        VStack(spacing:24) {
+            if triviaViewModel.questionPool.count != 0 {
                 switch Double(triviaViewModel.score) / Double(triviaViewModel.questionPool.count) {
                     case 0..<0.3:
                         Text("💩")
@@ -56,24 +56,23 @@ struct ResultView: View {
         .padding(.horizontal, 32)
         .multilineTextAlignment(.center)
     }
-    private func endGame() -> some View {
+    private func endButton() -> some View {
         Button(action: {
             navigationPath = NavigationPath()
         }) {
             Text("End game")
         }
         .buttonStyle(TriviaButton(backgroundColor: .butter))
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 60)
     }
     
     var body: some View {
-        VStack(spacing: 25) {
+        VStack(spacing: 24) {
             Spacer()
             finalScore()
             finalComment()
             Spacer()
-            endGame()
+            endButton()
         }
         .padding()
         .navigationBarBackButtonHidden()

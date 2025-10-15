@@ -20,21 +20,26 @@ struct HomeView: View {
                 easterEggCount += 1
             }
         }) {
-            HStack {
-                Image(systemName: "gamecontroller.circle.fill")
+            VStack {
+                Image(.titleIcon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 40)
-                Text("VGTrivia")
+                    .frame(height: 100)
+                HStack(alignment:.top) {
+                    Text("VGTrivia")
+                    Text("v1.1")
+                        .font(.appBody)
+                }
             }
         }
         .buttonStyle(BigTitleButton())
     }
-    private func numberOfQuestions() -> some View {
+    private func roundLength() -> some View {
         CardView {
-            VStack(spacing: 20) {
-                Text("Number of questions")
+            VStack(spacing: 24) {
+                Text("Round length (questions)")
                     .font(.appTitle)
+                    .multilineTextAlignment(.center)
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
                     ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
                         Button(action: {
@@ -45,6 +50,8 @@ struct HomeView: View {
                         .buttonStyle(TriviaButton(backgroundColor: triviaViewModel.roundLength == index ? .babyBlue : .pearl))
                     }
                 }
+                Text("Currently, the game has a pool of **\(questions.count)** total different questions.")
+                    .multilineTextAlignment(.center)
             }
             .padding()
         }
@@ -56,21 +63,20 @@ struct HomeView: View {
             Text("Start game")
         }
         .buttonStyle(TriviaButton())
-        .frame(height: 110)
-        .clipped()
+        .frame(height: 60)
     }
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            VStack(spacing: 50) {
-                Spacer()
+            VStack(spacing: 42) {
                 bigTitle()
-                numberOfQuestions()
-                Spacer()
+                roundLength()
                 startButton()
             }
             .padding()
+            .background(Color.background)
             .onAppear {
+                easterEggCount = 0
                 triviaViewModel.resetRound()
             }
             .navigationDestination(for: DestinationViews.self) { destination in
@@ -83,7 +89,6 @@ struct HomeView: View {
                         EasterEggView(navigationPath: $navigationPath).environment(triviaViewModel)
                 }
             }
-            .background(Color.background)
         }
     }
 }

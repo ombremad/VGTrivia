@@ -1,5 +1,5 @@
 //
-//  AudioPlayer.swift
+//  MusicPlayer.swift
 //  VGTrivia
 //
 //  Created by Anne Ferret on 01/09/2025.
