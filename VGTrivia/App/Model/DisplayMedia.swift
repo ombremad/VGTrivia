@@ -8,6 +8,6 @@
 import SwiftUI
 
 struct DisplayMedia {
-    let type: MediaType
-    let url: String
+  let type: MediaType
+  let url: String
 }
