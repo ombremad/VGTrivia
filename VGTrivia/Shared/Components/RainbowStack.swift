@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct RainbowStack: View {
-    var body: some View {
-        HStack(spacing: 0) {
-            Rectangle()
-                .fill(.babyBlue)
-            Rectangle()
-                .fill(.peach)
-            Rectangle()
-                .fill(.butter)
-            Rectangle()
-                .fill(.lavender)
-            Rectangle()
-                .fill(.minty)
-        }
-        .frame(height:5)
+  var body: some View {
+    HStack(spacing: 0) {
+      Rectangle()
+        .fill(.babyBlue)
+      Rectangle()
+        .fill(.peach)
+      Rectangle()
+        .fill(.butter)
+      Rectangle()
+        .fill(.lavender)
+      Rectangle()
+        .fill(.minty)
     }
+    .frame(height: 5)
+  }
 }

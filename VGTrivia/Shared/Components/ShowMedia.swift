@@ -8,28 +8,34 @@
 import SwiftUI
 
 struct ShowMedia: View {
-    @State var media: DisplayMedia?
-    
-    var body: some View {
-        if let m = media,
-           let url = URL(string: m.url) {
-            switch m.type {
-                case .image:
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(25)
-                    } placeholder: {
-                        ProgressView()
-                    }
-            }
-        } else {
-            EmptyView()
+  @State var media: DisplayMedia?
+
+  var body: some View {
+    if let m = media,
+      let url = URL(string: m.url)
+    {
+      switch m.type {
+      case .image:
+        AsyncImage(url: url) { image in
+          image
+            .resizable()
+            .scaledToFit()
+            .clipShape(.rect(cornerRadius: 25))
+        } placeholder: {
+          ProgressView()
         }
+      }
+    } else {
+      EmptyView()
     }
+  }
 }
 
 #Preview {
-    ShowMedia(media: DisplayMedia(type: .image, url: "https://github.com/ombremad/VGTrivia/blob/multimedia_questions/VGTrivia_assets/jean_reno.jpg?raw=true"))
+  ShowMedia(
+    media: DisplayMedia(
+      type: .image,
+      url:
+        "https://github.com/ombremad/VGTrivia/blob/multimedia_questions/VGTrivia_assets/jean_reno.jpg?raw=true"
+    ))
 }
