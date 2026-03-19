@@ -27,7 +27,7 @@ struct HomeView: View {
           .frame(height: 100)
         HStack(alignment: .top) {
           Text("VGTrivia")
-          Text("v1.1")
+          Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
             .font(.appBody)
         }
       }
