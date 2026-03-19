@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-  @Environment(TriviaViewModel.self) var triviaViewModel
+  @Environment(ViewModel.self) var vm
   @State var navigationPath = NavigationPath()
   @State var easterEggCount: Int = 0
 
@@ -43,17 +43,19 @@ struct HomeView: View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
           ForEach(Array(stride(from: 5, to: 31, by: 5)), id: \.self) { index in
             Button(action: {
-              triviaViewModel.roundLength = index
+              vm.roundLength = index
             }) {
               Text(index.description)
             }
             .buttonStyle(
               TriviaButton(
-                backgroundColor: triviaViewModel.roundLength == index ? .babyBlue : .pearl))
+                backgroundColor: vm.roundLength == index ? .babyBlue : .pearl))
           }
         }
         Text(
-          "Currently, the game has a pool of **\(QuestionBank.all.count)** total different questions."
+          vm.hasAnsweredEveryQuestion
+            ? "You have answered **all of the \(QuestionBank.all.count) questions available!** Starting a new game will reset your history and pick from all questions back again."
+            : "You have answered **\(vm.appData.answeredHistory.count)** questions out of **\(QuestionBank.all.count)**."
         )
         .multilineTextAlignment(.center)
       }
@@ -81,16 +83,16 @@ struct HomeView: View {
       .background(Color.background)
       .onAppear {
         easterEggCount = 0
-        triviaViewModel.resetRound()
+        vm.resetRound()
       }
       .navigationDestination(for: DestinationViews.self) { destination in
         switch destination {
         case .round:
-          RoundView(navigationPath: $navigationPath).environment(triviaViewModel)
+          RoundView(navigationPath: $navigationPath).environment(vm)
         case .result:
-          ResultView(navigationPath: $navigationPath).environment(triviaViewModel)
+          ResultView(navigationPath: $navigationPath).environment(vm)
         case .easterEgg:
-          EasterEggView(navigationPath: $navigationPath).environment(triviaViewModel)
+          EasterEggView(navigationPath: $navigationPath).environment(vm)
         }
       }
     }
@@ -99,6 +101,6 @@ struct HomeView: View {
 
 #Preview {
   HomeView()
-    .environment(TriviaViewModel())
+    .environment(ViewModel())
     .font(.appBody)
 }

@@ -30,7 +30,6 @@ struct CardView<Content: View>: View {
     .foregroundStyle(Color.foreground)
     .background(Color.background)
     .clipShape(RoundedRectangle(cornerRadius: 20))
-    //        .frame(height: 320)
     .shadow(radius: 3)
   }
 }

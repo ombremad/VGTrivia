@@ -9,7 +9,7 @@ import AVKit
 import SwiftUI
 
 struct EasterEggView: View {
-  @Environment(TriviaViewModel.self) var triviaViewModel
+  @Environment(ViewModel.self) var vm
   @Binding var navigationPath: NavigationPath
 
   @State private var musicPlayer = MusicPlayer()
@@ -124,6 +124,6 @@ struct EasterEggView: View {
 
 #Preview {
   EasterEggView(navigationPath: .constant(NavigationPath()))
-    .environment(TriviaViewModel())
+    .environment(ViewModel())
     .font(.appBody)
 }

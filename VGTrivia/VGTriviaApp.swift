@@ -9,14 +9,15 @@ import SwiftUI
 
 @main
 struct VGTriviaApp: App {
-  @State var triviaViewModel = TriviaViewModel()
+  @State var vm = ViewModel()
 
   var body: some Scene {
     WindowGroup {
       HomeView()
-        .environment(triviaViewModel)
+        .environment(vm)
         .background(Color.background)
         .font(.appBody)
+        .onAppear { vm.load() }
     }
   }
 }

@@ -1,32 +1,22 @@
 //
-//  TriviaViewModel.swift
+//  Trivia.swift
 //  VGTrivia
 //
-//  Created by Anne Ferret on 22/08/2025.
+//  Created by Anne Ferret on 19/03/2026.
 //
 
-import SwiftUI
-
-@Observable
-class TriviaViewModel {
-  var roundQuestions: [Question] = []
-  var roundLength: Int = 5
-  var index: Int = 0
-  var score: Int = 0
-  var hasAnswered: Bool = false
-  var hasAnsweredCorrectly: Bool = false
-  var isLastQuestion: Bool { index >= roundQuestions.count - 1 }
-  var progress: Double {
-    guard !roundQuestions.isEmpty else { return 0 }
-    return Double(index + 1) / Double(roundQuestions.count)
-  }
-
+extension ViewModel {
   // This generates an array with random questions.
   // Number of questions is defined for the round.
   // Answers are shuffled for every question unless preventShuffling is set in a question.
   func newRound() {
     resetRound()
+    if hasAnsweredEveryQuestion {
+      appData.answeredHistory.removeAll()
+      save()
+    }
     roundQuestions = QuestionBank.all
+      .filter { !appData.answeredHistory.contains($0.id) }
       .shuffled()
       .prefix(roundLength)
       .map { question in
@@ -38,16 +28,12 @@ class TriviaViewModel {
       }
   }
 
-  // Returns the current question to display.
-  // If the question pool is empty, it safely returns nil to prevent crashes.
-  func getQuestion() -> Question? {
-    guard !roundQuestions.isEmpty else { return nil }
-    return roundQuestions[index]
-  }
-
   func checkAnswer(_ answer: String) {
+    guard let question = currentQuestion else { return }
     hasAnswered = true
-    if answer == roundQuestions[index].correctAnswer {
+    appData.answeredHistory.append(question.id)
+    save()
+    if answer == question.correctAnswer {
       score += 1
       hasAnsweredCorrectly = true
     }

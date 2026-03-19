@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResultView: View {
-  @Environment(TriviaViewModel.self) var triviaViewModel
+  @Environment(ViewModel.self) var vm
   @Binding var navigationPath: NavigationPath
   @State var scoreOffset: CGFloat = 500
   @State var commentOffset: CGFloat = 500
@@ -17,15 +17,15 @@ struct ResultView: View {
     VStack(spacing: 10) {
       Text("Final score")
         .font(.appTitle)
-      Text("\(triviaViewModel.score.description) / \(triviaViewModel.roundQuestions.count)")
+      Text("\(vm.score.description) / \(vm.roundQuestions.count)")
         .font(.scoreBig)
     }
     .offset(x: scoreOffset)
   }
   private func finalComment() -> some View {
     VStack(spacing: 24) {
-      if triviaViewModel.roundQuestions.count != 0 {
-        switch Double(triviaViewModel.score) / Double(triviaViewModel.roundQuestions.count) {
+      if vm.roundQuestions.count != 0 {
+        switch Double(vm.score) / Double(vm.roundQuestions.count) {
         case 0..<0.3:
           Text("💩")
             .font(.emojiBig)
@@ -100,6 +100,6 @@ struct ResultView: View {
 
 #Preview {
   ResultView(navigationPath: .constant(NavigationPath()))
-    .environment(TriviaViewModel())
+    .environment(ViewModel())
     .font(.appBody)
 }

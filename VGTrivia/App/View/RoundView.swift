@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RoundView: View {
-  @Environment(TriviaViewModel.self) var triviaViewModel
+  @Environment(ViewModel.self) var vm
   @Binding var navigationPath: NavigationPath
 
   @State private var exitAlert = false
   @State private var isMediaFullscreen = true
 
   func getRoundProgression() -> CGFloat {
-    return CGFloat(triviaViewModel.roundQuestions.count * (triviaViewModel.index + 1))
+    return CGFloat(vm.roundQuestions.count * (vm.index + 1))
   }
 
   private func header() -> some View {
@@ -39,18 +39,18 @@ struct RoundView: View {
         Spacer()
         HStack(alignment: .bottom) {
           Text("Score : ")
-          Text(triviaViewModel.score.description)
+          Text(vm.score.description)
             .font(.scoreBig)
             .offset(y: 1)
         }
         Spacer()
         HStack(alignment: .bottom) {
           Text("Question :")
-          Text((triviaViewModel.index + 1).description)
+          Text((vm.index + 1).description)
             .font(.scoreBig)
             .frame(width: 30)
             .offset(y: 1)
-          Text("/ \(triviaViewModel.roundQuestions.count)")
+          Text("/ \(vm.roundQuestions.count)")
             .font(.score)
         }
       }
@@ -66,10 +66,10 @@ struct RoundView: View {
         GeometryReader { p in
           Rectangle()
             .fill(Color.lavender)
-            .frame(width: p.size.width * triviaViewModel.progress)
+            .frame(width: p.size.width * vm.progress)
             .clipShape(.rect(cornerRadius: 200))
             .animation(
-              .bouncy(duration: 0.6, extraBounce: 0.2), value: triviaViewModel.index)
+              .bouncy(duration: 0.6, extraBounce: 0.2), value: vm.index)
           Rectangle()
             .fill(.foreground.opacity(0.05))
         }
@@ -80,7 +80,7 @@ struct RoundView: View {
   }
   private func questionCard() -> some View {
     CardView {
-      if let q = triviaViewModel.getQuestion() {
+      if let q = vm.currentQuestion {
         Text(q.title)
           .font(.appTitle)
         ShowMedia(media: q.media)
@@ -93,18 +93,18 @@ struct RoundView: View {
   }
   private func explanationCard() -> some View {
     CardView {
-      if let q = triviaViewModel.getQuestion() {
+      if let q = vm.currentQuestion {
         HStack {
           Image(
-            systemName: triviaViewModel.hasAnsweredCorrectly
+            systemName: vm.hasAnsweredCorrectly
               ? "checkmark.circle.fill" : "xmark.circle.fill")
-          Text(triviaViewModel.hasAnsweredCorrectly ? "You guessed it!" : "Wrong! The answer was")
+          Text(vm.hasAnsweredCorrectly ? "You guessed it!" : "Wrong! The answer was")
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 4)
         .foregroundStyle(Color.foreground)
         .font(.cardCallout)
-        .background(triviaViewModel.hasAnsweredCorrectly ? .minty : .peach)
+        .background(vm.hasAnsweredCorrectly ? .minty : .peach)
         .clipShape(.capsule)
         Text(q.correctAnswer)
           .font(.appTitle)
@@ -119,16 +119,16 @@ struct RoundView: View {
   private func answerButtons() -> some View {
     VStack {
       LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
-        ForEach(triviaViewModel.getQuestion()?.answers ?? [], id: \.self) { answer in
+        ForEach(vm.currentQuestion?.answers ?? [], id: \.self) { answer in
           Button(action: {
-            triviaViewModel.hasAnswered ? nil : triviaViewModel.checkAnswer(answer)
+            vm.hasAnswered ? nil : vm.checkAnswer(answer)
           }) {
             Text(answer)
           }
           .buttonStyle(
             TriviaButton(
-              backgroundColor: triviaViewModel.hasAnswered
-                ? (triviaViewModel.getQuestion()?.correctAnswer.lowercased() == answer.lowercased()
+              backgroundColor: vm.hasAnswered
+                ? (vm.currentQuestion?.correctAnswer.lowercased() == answer.lowercased()
                   ? .minty : .peach) : .babyBlue)
           )
         }
@@ -137,15 +137,15 @@ struct RoundView: View {
   }
   private func nextButton() -> some View {
     VStack {
-      if triviaViewModel.hasAnswered {
+      if vm.hasAnswered {
         Button(action: {
-          triviaViewModel.isLastQuestion
-            ? navigationPath.append(DestinationViews.result) : triviaViewModel.nextQuestion()
+          vm.isLastQuestion
+            ? navigationPath.append(DestinationViews.result) : vm.nextQuestion()
         }) {
-          Text(triviaViewModel.isLastQuestion ? "See results" : "Go to next question!")
+          Text(vm.isLastQuestion ? "See results" : "Go to next question!")
         }
         .buttonStyle(
-          TriviaButton(backgroundColor: triviaViewModel.isLastQuestion ? .butter : .babyBlue)
+          TriviaButton(backgroundColor: vm.isLastQuestion ? .butter : .babyBlue)
         )
       }
     }
@@ -156,7 +156,7 @@ struct RoundView: View {
     VStack(spacing: 24) {
       header()
       ZStack {
-        if triviaViewModel.hasAnswered {
+        if vm.hasAnswered {
           explanationCard()
             .transition(
               .asymmetric(
@@ -172,13 +172,13 @@ struct RoundView: View {
               ))
         }
       }
-      .animation(.easeInOut(duration: 0.3), value: triviaViewModel.hasAnswered)
+      .animation(.easeInOut(duration: 0.3), value: vm.hasAnswered)
       answerButtons()
       nextButton()
     }
     .padding()
     .onAppear {
-      triviaViewModel.newRound()
+      vm.newRound()
     }
     .navigationBarBackButtonHidden()
     .background(Color.background)
@@ -187,6 +187,6 @@ struct RoundView: View {
 
 #Preview {
   RoundView(navigationPath: .constant(NavigationPath()))
-    .environment(TriviaViewModel())
+    .environment(ViewModel())
     .font(.appBody)
 }
