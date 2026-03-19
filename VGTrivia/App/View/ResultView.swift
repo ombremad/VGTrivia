@@ -10,8 +10,8 @@ import SwiftUI
 struct ResultView: View {
   @Environment(ViewModel.self) var vm
   @Binding var navigationPath: NavigationPath
-  @State var scoreOffset: CGFloat = 500
-  @State var commentOffset: CGFloat = 500
+  @State var scoreVisible: Bool = false
+  @State var commentVisible: Bool = false
 
   private func finalScore() -> some View {
     VStack(spacing: 10) {
@@ -20,7 +20,6 @@ struct ResultView: View {
       Text("\(vm.score.description) / \(vm.roundQuestions.count)")
         .font(.scoreBig)
     }
-    .offset(x: scoreOffset)
   }
   private func finalComment() -> some View {
     VStack(spacing: 24) {
@@ -60,7 +59,6 @@ struct ResultView: View {
         }
       }
     }
-    .offset(x: commentOffset)
     .padding(.horizontal, 32)
     .multilineTextAlignment(.center)
   }
@@ -77,24 +75,27 @@ struct ResultView: View {
   var body: some View {
     VStack(spacing: 24) {
       Spacer()
-      finalScore()
-      finalComment()
+      if scoreVisible {
+        finalScore()
+          .transition(.move(edge: .trailing).combined(with: .opacity))
+      }
+      if commentVisible {
+        finalComment()
+          .transition(.move(edge: .trailing).combined(with: .opacity))
+      }
       Spacer()
       endButton()
     }
-    .padding()
-    .navigationBarBackButtonHidden()
-    .background(Color.background)
     .onAppear {
-      scoreOffset = 500
-      commentOffset = 500
       withAnimation(.bouncy(duration: 0.5, extraBounce: 0.25).delay(0.25)) {
-        scoreOffset = 0
+        scoreVisible = true
       }
       withAnimation(.bouncy(duration: 0.5, extraBounce: 0.25).delay(1.5)) {
-        commentOffset = 0
+        commentVisible = true
       }
     }
+    .padding()
+    .navigationBarBackButtonHidden()
   }
 }
 
