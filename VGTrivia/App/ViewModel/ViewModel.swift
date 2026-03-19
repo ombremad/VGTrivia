@@ -26,7 +26,7 @@ class ViewModel {
   var isLastQuestion: Bool { index >= roundQuestions.count - 1 }
   var progress: Double {
     guard !roundQuestions.isEmpty else { return 0 }
-    return Double(index + 1) / Double(roundQuestions.count)
+    return Double(index) / Double(roundQuestions.count)
   }
   var hasAnsweredEveryQuestion: Bool { appData.answeredHistory.count == QuestionBank.all.count }
 }
